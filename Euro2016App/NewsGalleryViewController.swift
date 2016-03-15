@@ -24,10 +24,10 @@ class NewsGalleryViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.topItem?.title = "Test"
+        self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationItem.title = " News GALLERY"
+        self.navigationItem.title = "GALLERY"
         // title = "GALLERY"
         
         
