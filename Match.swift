@@ -12,15 +12,16 @@ import UIKit
 class Match: NSObject
 {
     //MARK: Properties
-    var matchStage : NSString
-    var matchDictArray: [[String:String]] = []
+    var matchgroup : NSString
+    var matchDict: [String:String] = [:]
     
     
     //MARK:Initialization
-    init(matchStage:String,matchDictArray:[[String:String]])
+    init(matchgroup:NSString ,matchDict:[String:String])
     {
-        self.matchStage = matchStage
-        self.matchDictArray = matchDictArray
+       
+        self.matchDict = matchDict
+        self.matchgroup = matchgroup
         
     }
     

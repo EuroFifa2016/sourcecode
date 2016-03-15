@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MatchViewController: UIViewController {
+class MatchViewController: ActivityIndicatorViewController {
     
     
     @IBOutlet weak var matchTable: UITableView!
@@ -17,6 +17,7 @@ class MatchViewController: UIViewController {
 
     //MARK: Properties
     var match = [Match]()
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,10 +41,39 @@ class MatchViewController: UIViewController {
     {
         
         
-        let match1 = Match(matchStage: "   Group Stage Matches", matchDictArray: [["team1Image":"team1", "team1Name":"India", "teamPoints":"1 : 1","team2Name":"Pakistan","team2Image":"team-flag-2","DayandDate":"SAT 17/10/2015","isFirst":"1"],["team1Image":"team1", "team1Name":"England", "teamPoints":"19:00 hours Group - A","team2Name":"USA","team2Image":"team-flag-2","DayandDate":"SAT 17/10/2015","isFirst":"0"],["team1Image":"team1", "team1Name":"Brazil", "teamPoints":"3:00 hours Group - A","team2Name":"Croatia","team2Image":"team-flag-2","DayandDate":"SAT 18/10/2015","isFirst":"1"],["team1Image":"team1", "team1Name":"Chile", "teamPoints":"14:00 hours Group - A","team2Name":"Germany","team2Image":"team-flag-2","DayandDate":"SAT 18/10/2015","isFirst":"0"],["team1Image":"team1", "team1Name":"Australia", "teamPoints":"17:00 hours Group - A","team2Name":"Mali","team2Image":"team-flag-2","DayandDate":"SAT 18/10/2015","isFirst":"0"],["team1Image":"team1", "team1Name":"Belgium", "teamPoints":"20:00 hours Group - B","team2Name":"Ecuador","team2Image":"team-flag-2","DayandDate":"SAT 18/10/2015","isFirst":"0"],["team1Image":"team1", "team1Name":"Hunduras", "teamPoints":"22:00 hours Group - B","team2Name":"India","team2Image":"team-flag-2","DayandDate":"SAT 19/10/2015","isFirst":"1"]])
         
         
-            match += [match1]
+            super.progressBarDisplayer(true, view: self.view)
+            DataManager.GETAPI("getMatches")
+                {
+                    (response) -> Void in
+                    super.progressBarDisplayer( false, view: self.view)
+                    if response.objectForKey("result") as? Bool == true {
+                       
+                        
+                        for index in response.objectForKey("matchesInfo") as! NSArray
+                        {
+ 
+                            if index.objectForKey("group_stage")as! String == "1"
+                           {
+                           
+                            self.match += [ Match(matchgroup: "group_stage", matchDict: index as! [String:String] )]
+                            
+                           }
+                            
+                            
+                            
+                        }
+                         print(self.match)
+                        self.matchTable .reloadData()
+                        
+                    }
+                    
+                    
+            }
+        
+        
+            
         
        
         
@@ -52,27 +82,29 @@ class MatchViewController: UIViewController {
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return match.count
+        return self.match.count
+       
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         
-        return match[section].matchDictArray.count
+        return self.match[section].matchDict.count
+        
         
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
-    {
-        let height=(match[indexPath.section].matchDictArray[indexPath.row]["isFirst"])!as NSString
-        if height=="1"
-        {
-            return 64
-        } else {
-            return 44
-        }
-
-    }
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+//    {
+//        let height=(match[indexPath.section].matchDictArray[indexPath.row]["isFirst"])!as NSString
+//        if height=="1"
+//        {
+//            return 64
+//        } else {
+//            return 44
+//        }
+//
+//    }
     
     
     
@@ -82,27 +114,36 @@ class MatchViewController: UIViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("MatchTableViewCell", forIndexPath: indexPath) as! MatchTableViewCell
         
+       
         
-        cell.firstTeamLabel.text = match[indexPath.section].matchDictArray[indexPath.row]["team1Name"]
         
-        cell.secondTeamLabel.text = match[indexPath.section].matchDictArray[indexPath.row]["team2Name"]
         
-        cell.pointsLabel.text =  match[indexPath.section].matchDictArray[indexPath.row]["teamPoints"]
+            cell.firstTeamLabel.text = self.match[section].mat
+            
+            
+                    cell.secondTeamLabel.text = self.match[section].matchDict["team2_name"]
+            
+//                    cell.pointsLabel.text =  arrayDict[indexPath.section]["group_stage"]![indexPath.row]["team2_name"]
+//            
+//                    cell.firstTeamImageView.image = UIImage(imageLiteral:match[indexPath.section].matchDictArray[indexPath.row]["team1Image"]! )
+//            
+//                    cell.secondTeamImageView.image = UIImage(imageLiteral:match[indexPath.section].matchDictArray[indexPath.row]["team2Image"]! )
+            
+            
+//                    if height=="1"
+//                    {
+//                        cell.timeLabel.text=match[indexPath.section].matchDictArray[indexPath.row]["DayandDate"]
+//                    } else {
+//                      cell.timeLabel.hidden = true
         
-        cell.firstTeamImageView.image = UIImage(imageLiteral:match[indexPath.section].matchDictArray[indexPath.row]["team1Image"]! )
-        
-        cell.secondTeamImageView.image = UIImage(imageLiteral:match[indexPath.section].matchDictArray[indexPath.row]["team2Image"]! )
+           
+                  
+            
 
-        let height=(match[indexPath.section].matchDictArray[indexPath.row]["isFirst"])!as NSString
-        if height=="1"
-        {
-            cell.timeLabel.text=match[indexPath.section].matchDictArray[indexPath.row]["DayandDate"]
-        } else {
-            cell.timeLabel.hidden = true
-        }
+            
+        
+        
 
-        
-        
         
         
         return cell
@@ -116,16 +157,13 @@ class MatchViewController: UIViewController {
         let header = UIView(frame: CGRectMake(0, 0, view.frame.size.width, 25))
         header.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.65)
         
-//        let imageView=UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, 30))
-//        imageView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.65)
-//        header.addSubview(imageView)
         
         let label = UILabel(frame: CGRectMake(0, 0, header.frame.size.width-50, 25))
        
         label.textAlignment = NSTextAlignment.Left
         label.textColor = UIColor .whiteColor()
         label.font = UIFont(name: "Quicksand-Regular", size: 14)
-        label.text = match[section].matchStage as String
+        label.text = match[section].matchgroup as String
         header.addSubview(label)
         
         return header

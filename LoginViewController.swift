@@ -11,7 +11,7 @@ import Fabric
 import TwitterKit
 
 
-class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate, GIDSignInUIDelegate{
+class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate,GIDSignInDelegate, GIDSignInUIDelegate{
     
     // MARK: Properties
     @IBOutlet weak var scrollView: UIScrollView!
@@ -21,33 +21,39 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate, 
     
     
     // MARK:Actions
-    
-   
-    @IBOutlet weak var signInButton: GIDSignInButton!
+    @IBAction func googleButtonAction(sender: AnyObject)
+    {
+        super.progressBarDisplayer( false, view: self.view)
+        let signIn = GIDSignIn.sharedInstance()
+        signIn.delegate = self
+        signIn.uiDelegate = self
+        signIn.signIn()
+        
+    }
     @IBAction func twitterButtonAction(sender: AnyObject) {
         
         super.progressBarDisplayer( true, view: self.view)
         
         
-            
-            Twitter.sharedInstance().logInWithCompletion
+        
+        Twitter.sharedInstance().logInWithCompletion
+            {
+                session, error in
+                
+                
+                if (session != nil)
                 {
-                    session, error in
                     
+                    self.getUserTimeline((session?.userID)!)
                     
-                    if (session != nil)
-                    {
-                        
-                        self.getUserTimeline((session?.userID)!)
-
-                    }
-                    else
-                    {
-                        super.progressBarDisplayer( false, view: self.view)
-                        print("error: \(error!.localizedDescription)");
-                    }
-            }
-
+                }
+                else
+                {
+                    super.progressBarDisplayer( false, view: self.view)
+                    print("error: \(error!.localizedDescription)");
+                }
+        }
+        
         
     }
     
@@ -69,12 +75,6 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate, 
             {
                 let fbloginresult : FBSDKLoginManagerLoginResult = result
                 self.returnUserData()
-//                if(fbloginresult.grantedPermissions.contains("email"))
-//                {
-//                    
-//                    self.returnUserData()
-//                    
-//                }
             }
             else
             {
@@ -109,7 +109,7 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate, 
                         {
                             let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
                             
-                           self.navigationController?.pushViewController(viewController, animated: true)
+                            self.navigationController?.pushViewController(viewController, animated: true)
                         }
                     })
                     
@@ -134,7 +134,7 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate, 
         let emailRegEx: String = "[0-9a-z._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}"
         let emailTest: NSPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         
-       
+        
         let trimmedEmailString = self.emailTextField.text!.stringByTrimmingCharactersInSet(
             NSCharacterSet.whitespaceAndNewlineCharacterSet()
         )
@@ -203,7 +203,7 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate, 
             let deviceToken = defaults .valueForKey("deviceToken") as? String ?? ""
             
             let loginParamDict:[String:AnyObject] = ["email":trimmedEmailString,"password":trimmedPasswordString,"device_token":deviceToken,"device_type":"IOS"]
-             super.progressBarDisplayer( true, view: self.view)
+            super.progressBarDisplayer( true, view: self.view)
             
             DataManager.API("userLogin", jsonString: loginParamDict, success:
                 
@@ -239,7 +239,7 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate, 
                     
             })
             
-
+            
             
         }
         
@@ -254,16 +254,15 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate, 
     //MARK: View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-  
-       
-  
-    
-   
-  GIDSignIn.sharedInstance().uiDelegate = self
         
-        signInButton.layer.cornerRadius = 3
-         signInButton.layer.masksToBounds = true
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
+        
+        var configureError: NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        
         // Setting Boundary Color and Corner Radius of Email Password View
         emailPasswordView.layer.cornerRadius = 3
         emailPasswordView.layer.borderColor = UIColor .grayColor().CGColor
@@ -283,11 +282,7 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate, 
         // Do any additional setup after loading the view.
     }
     
-    
-   
-    
-    
-    override func viewWillAppear(animated: Bool) {
+       override func viewWillAppear(animated: Bool) {
         
         self.navigationController?.navigationBarHidden = true
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "main_bg")!)
@@ -301,57 +296,87 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate, 
         Twitter.sharedInstance().APIClient.loadUserWithID (userId, completion: {
             (user, error) in
             
-           if (user != nil)
-           {
-            let defaults = NSUserDefaults.standardUserDefaults()
-            let deviceToken = defaults .valueForKey("deviceToken") as? String ?? ""
-            
-            
-            let twitterParamDict:[String:AnyObject] = ["full_name":(user?.name)!,"twitterId":(user?.userID)!,"device_token":deviceToken,"device_type":"IOS","profile_image":(user?.profileImageMiniURL)!]
-            
-            DataManager.API("twitterLogin", jsonString: twitterParamDict, success:
-                
-                {
-                    (response) -> Void in
+            if (user != nil)
+            {
+                let defaults = NSUserDefaults.standardUserDefaults()
+                let deviceToken = defaults .valueForKey("deviceToken") as? String ?? ""
                 
                 
-                if response.objectForKey("result") as? Bool == true
-                {
-                     super.progressBarDisplayer( false, view: self.view)
-                    let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
+                let twitterParamDict:[String:AnyObject] = ["full_name":(user?.name)!,"twitterId":(user?.userID)!,"device_token":deviceToken,"device_type":"IOS","profile_image":(user?.profileImageMiniURL)!]
+                
+                DataManager.API("twitterLogin", jsonString: twitterParamDict, success:
                     
-                    self.navigationController?.pushViewController(viewController, animated: true)
-                }
-                else
-                {
-                     super.progressBarDisplayer( false, view: self.view)
-                    print("error")
-                }
+                    {
+                        (response) -> Void in
+                        
+                        
+                        if response.objectForKey("result") as? Bool == true
+                        {
+                            super.progressBarDisplayer( false, view: self.view)
+                            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
+                            
+                           self.navigationController?.pushViewController(viewController, animated: true)
+                        }
+                        else
+                        {
+                            super.progressBarDisplayer( false, view: self.view)
+                            print("error")
+                        }
+                        
+                        
+                })
                 
                 
-            })
-            
-
-           }
+            }
             else
-           {
-              super.progressBarDisplayer( false, view: self.view)
-              print("error")
-           }
-           
-            
-            
-
-
+            {
+                super.progressBarDisplayer( false, view: self.view)
+                print("error")
+            }
         })
         
         
     }
     
     
-    
-    
-
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+        withError error: NSError!) {
+            if (error == nil) {
+                
+                
+                // Perform any operations on signed in user here.
+                let userId = user.userID                  // For client-side use only!
+                let name = user.profile.name
+                let email = user.profile.email
+                // let url = user.profile.imageURLWithDimension(0.1)
+                
+                let defaults = NSUserDefaults.standardUserDefaults()
+                let deviceToken = defaults .valueForKey("deviceToken") as? String ?? ""
+                
+                let GoogleParamDict:[String:AnyObject] = ["name":name, "googleId":userId,"email":email,"device_token":deviceToken,"device_type":"IOS"]
+                print(GoogleParamDict)
+                
+                DataManager.API("googleLogin", jsonString: GoogleParamDict, success: { (response) -> Void in
+                    print (response)
+                    super.progressBarDisplayer( false, view: self.view)
+                    if response.objectForKey("result") as? Bool == true
+                    {
+                        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
+                        
+                        self.navigationController?.pushViewController(viewController, animated: true)
+                    }
+                    else
+                    {
+                        print(error)
+                    }
+                })
+                
+                // ...
+            } else {
+                print("\(error.localizedDescription)")
+                super.progressBarDisplayer( false, view: self.view)
+            }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

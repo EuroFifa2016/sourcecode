@@ -305,6 +305,24 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J2T-d4-v6M">
                                                         <rect key="frame" x="72" y="426" width="156" height="45"/>
                                                         <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1n-qF-1pa">
+                                                                <rect key="frame" x="56" y="0.0" width="45" height="45"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="45" id="YMa-RJ-47l"/>
+                                                                </constraints>
+                                                                <state key="normal" backgroundImage="google+-btn"/>
+                                                                <connections>
+                                                                    <action selector="googleButtonAction:" destination="nNz-ti-0Pc" eventType="touchUpInside" id="xdi-uw-dGg"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqz-Pc-AFH">
+                                                                <rect key="frame" x="112" y="0.0" width="45" height="45"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                <state key="normal" image="twitter-btn"/>
+                                                                <connections>
+                                                                    <action selector="twitterButtonAction:" destination="nNz-ti-0Pc" eventType="touchUpInside" id="Cbi-nm-Iq8"/>
+                                                                </connections>
+                                                            </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqx-yG-Xn9">
                                                                 <rect key="frame" x="0.0" y="0.0" width="45" height="45"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -316,36 +334,22 @@
                                                                     <action selector="facebookBtnAction:" destination="nNz-ti-0Pc" eventType="touchUpInside" id="Cty-FT-Exq"/>
                                                                 </connections>
                                                             </button>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WLy-3b-Esq" customClass="GIDSignInButton">
-                                                                <rect key="frame" x="56" y="0.0" width="45" height="45"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqz-Pc-AFH">
-                                                                <rect key="frame" x="112" y="0.0" width="45" height="45"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                <state key="normal" image="twitter-btn"/>
-                                                                <connections>
-                                                                    <action selector="twitterButtonAction:" destination="nNz-ti-0Pc" eventType="touchUpInside" id="Cbi-nm-Iq8"/>
-                                                                </connections>
-                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <constraints>
+                                                            <constraint firstItem="l1n-qF-1pa" firstAttribute="top" secondItem="Fqx-yG-Xn9" secondAttribute="top" id="0nT-Vn-tMT"/>
                                                             <constraint firstItem="gqz-Pc-AFH" firstAttribute="height" secondItem="Fqx-yG-Xn9" secondAttribute="height" id="2R5-jv-lVD"/>
                                                             <constraint firstItem="gqz-Pc-AFH" firstAttribute="width" secondItem="Fqx-yG-Xn9" secondAttribute="width" id="5Dg-Gx-Zqy"/>
                                                             <constraint firstItem="Fqx-yG-Xn9" firstAttribute="firstBaseline" secondItem="gqz-Pc-AFH" secondAttribute="firstBaseline" id="5X8-Bh-f7c"/>
                                                             <constraint firstItem="Fqx-yG-Xn9" firstAttribute="leading" secondItem="J2T-d4-v6M" secondAttribute="leading" id="IxT-Bb-OJs"/>
+                                                            <constraint firstItem="l1n-qF-1pa" firstAttribute="leading" secondItem="Fqx-yG-Xn9" secondAttribute="trailing" constant="11" id="Iyl-By-F41"/>
                                                             <constraint firstItem="gqz-Pc-AFH" firstAttribute="baseline" secondItem="Fqx-yG-Xn9" secondAttribute="baseline" id="MAf-2q-dWV"/>
                                                             <constraint firstItem="Fqx-yG-Xn9" firstAttribute="top" secondItem="J2T-d4-v6M" secondAttribute="top" id="Mv1-SS-PAV"/>
                                                             <constraint firstItem="Fqx-yG-Xn9" firstAttribute="firstBaseline" secondItem="gqz-Pc-AFH" secondAttribute="firstBaseline" id="TkL-JB-chN"/>
-                                                            <constraint firstItem="WLy-3b-Esq" firstAttribute="top" secondItem="Fqx-yG-Xn9" secondAttribute="top" id="WSD-Ym-a2B"/>
                                                             <constraint firstAttribute="trailing" secondItem="gqz-Pc-AFH" secondAttribute="trailing" constant="-1" id="Y6Z-Ey-YVT"/>
-                                                            <constraint firstItem="WLy-3b-Esq" firstAttribute="centerX" secondItem="J2T-d4-v6M" secondAttribute="centerX" id="cqN-iv-rPc"/>
                                                             <constraint firstItem="Fqx-yG-Xn9" firstAttribute="baseline" secondItem="gqz-Pc-AFH" secondAttribute="baseline" id="eNX-xY-aoK"/>
-                                                            <constraint firstItem="WLy-3b-Esq" firstAttribute="width" secondItem="Fqx-yG-Xn9" secondAttribute="width" id="mnm-M3-b5O"/>
-                                                            <constraint firstItem="WLy-3b-Esq" firstAttribute="bottom" secondItem="Fqx-yG-Xn9" secondAttribute="bottom" id="pm4-RM-fg5"/>
-                                                            <constraint firstItem="WLy-3b-Esq" firstAttribute="height" secondItem="Fqx-yG-Xn9" secondAttribute="height" id="sT1-1Y-a8M"/>
-                                                            <constraint firstItem="WLy-3b-Esq" firstAttribute="leading" secondItem="Fqx-yG-Xn9" secondAttribute="trailing" constant="11" id="sxn-5v-IXn"/>
+                                                            <constraint firstItem="l1n-qF-1pa" firstAttribute="bottom" secondItem="Fqx-yG-Xn9" secondAttribute="bottom" id="iHG-ZV-VFx"/>
+                                                            <constraint firstItem="l1n-qF-1pa" firstAttribute="centerX" secondItem="J2T-d4-v6M" secondAttribute="centerX" id="pjU-ev-OA9"/>
                                                         </constraints>
                                                     </view>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="or_divider" translatesAutoresizingMaskIntoConstraints="NO" id="Uwh-mD-s1r">
@@ -431,7 +435,6 @@
                         <outlet property="emailTextField" destination="cCb-8K-eoN" id="Zc7-J2-bUB"/>
                         <outlet property="passwordTextField" destination="dnJ-pt-2vQ" id="5k8-pw-jBn"/>
                         <outlet property="scrollView" destination="n2E-Ku-cMT" id="3Wl-cC-jkC"/>
-                        <outlet property="signInButton" destination="WLy-3b-Esq" id="Hot-m4-WaO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D1v-ZL-fbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1026,7 +1029,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="matchTable" destination="38j-xz-7BC" id="OkO-6z-fly"/>
+                        <outlet property="matchTable" destination="38j-xz-7BC" id="bL6-vq-fYf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWF-Kb-iSe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2459,10 +2462,10 @@
                                         <size key="customSize" width="150" height="115"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="xDo-OY-xjw"/>
-                                                <exclude reference="wSg-Jd-ppQ"/>
                                                 <exclude reference="596-ci-zIN"/>
                                                 <exclude reference="fpA-1d-mtI"/>
+                                                <exclude reference="wSg-Jd-ppQ"/>
+                                                <exclude reference="xDo-OY-xjw"/>
                                             </mask>
                                         </variation>
                                     </collectionViewCell>
@@ -2771,6 +2774,7 @@
         <image name="facebook-btn" width="45" height="45"/>
         <image name="flag-1" width="29" height="19"/>
         <image name="flag-2" width="30" height="18"/>
+        <image name="google+-btn" width="45" height="45"/>
         <image name="list-bg" width="8" height="14"/>
         <image name="main_bg" width="320" height="568"/>
         <image name="or_divider" width="295" height="7"/>
