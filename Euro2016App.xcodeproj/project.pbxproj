@@ -84,6 +84,7 @@
 		55E185D61C7C770200C459D8 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E185D51C7C770200C459D8 /* registerViewController.swift */; };
 		55E185D81C7C7B9E00C459D8 /* RegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E185D71C7C7B9E00C459D8 /* RegisterTableViewCell.swift */; };
 		55F18E461C770624000C6F77 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F18E451C770624000C6F77 /* Alamofire.framework */; };
+		61E460F11C98144A0076ECFD /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E460F01C9814490076ECFD /* PlayerDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -173,6 +174,7 @@
 		55E185D51C7C770200C459D8 /* registerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
 		55E185D71C7C7B9E00C459D8 /* RegisterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTableViewCell.swift; sourceTree = "<group>"; };
 		55F18E451C770624000C6F77 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		61E460F01C9814490076ECFD /* PlayerDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetail.swift; sourceTree = "<group>"; };
 		B78DCDC942EC42B22951A2CC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCAA624B9FF2CE5BE966F601 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E99C8F23BA81581C629014A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -266,8 +268,8 @@
 				324AF0721C8EEF55004A035B /* CountriesViewController.swift */,
 				55724DED1C7731CD009E06C7 /* ActivityIndicatorViewController.swift */,
 				02B8AE021C71EAEF003DB3C7 /* MatchViewController.swift */,
-				02FB24A61C6DA94F00B8673A /* PlayerInfoViewController.swift */,
 				023DB01A1C6CB9CB009E5035 /* ScorerViewController.swift */,
+				02FB24A61C6DA94F00B8673A /* PlayerInfoViewController.swift */,
 				02C72B3E1C6B5393005E3CEF /* NewsDetailViewController.swift */,
 				02CAD3351C63353800E91146 /* FirstViewController.swift */,
 				02B951151C60946D00BA1076 /* LeftMenuViewController.swift */,
@@ -299,6 +301,7 @@
 				02FB24AA1C6DFA8200B8673A /* Standing.swift */,
 				023DB0181C6CB9CB009E5035 /* scorer.swift */,
 				02C90A2F1C64CFD100F104F1 /* News.swift */,
+				61E460F01C9814490076ECFD /* PlayerDetail.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -596,6 +599,7 @@
 				55E185D61C7C770200C459D8 /* registerViewController.swift in Sources */,
 				02B078111C68A420005B3CE1 /* IQTitleBarButtonItem.swift in Sources */,
 				324AF06F1C8EEBA2004A035B /* LoginViewController.swift in Sources */,
+				61E460F11C98144A0076ECFD /* PlayerDetail.swift in Sources */,
 				0208F53B1C61FBC40033ACC2 /* SideBarTableViewCell.swift in Sources */,
 				02FB24A71C6DA94F00B8673A /* PlayerInfoViewController.swift in Sources */,
 				02A83B251C72EF2A0074BB83 /* CollectionViewWaterfallLayout.swift in Sources */,

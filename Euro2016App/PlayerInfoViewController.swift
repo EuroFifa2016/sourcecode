@@ -10,11 +10,27 @@ import UIKit
 
 class PlayerInfoViewController: UIViewController {
 
+    var arr_PlayerInfo = []
    
     override func viewDidLoad() {
         super.viewDidLoad()
       self.navigationItem.title = "PLAYER"
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
      
+        print(playerdetails.playerImage,
+        playerdetails.playerName,
+        playerdetails.weight,
+        playerdetails.height,
+        playerdetails.birthDate,
+        playerdetails.nationality,
+        playerdetails.nationFlag,
+        playerdetails.teamFlag,
+        playerdetails.team,
+        playerdetails.position,
+        playerdetails.shirtNumber)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -50,6 +66,61 @@ class PlayerInfoViewController: UIViewController {
             // 3
             blurImageView.addSubview(blurView)
         }
+        let imageUrl =  NSURL(string: playerdetails.playerImage)
+        
+        let profileImage: UIImageView = self.view.viewWithTag(11) as! UIImageView
+        profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+         profileImage.sd_setImageWithURL(imageUrl)
+        profileImage.backgroundColor = UIColor.redColor()
+        profileImage.contentMode = UIViewContentMode.ScaleAspectFill
+        
+        let firstName = self.view.viewWithTag(1) as! UILabel
+        
+        firstName.text = playerdetails.playerName
+        
+        
+        let weight = self.view.viewWithTag(2) as! UILabel
+        
+        weight.text = playerdetails.weight
+        
+        
+        let height = self.view.viewWithTag(3) as! UILabel
+        
+        height.text = playerdetails.height
+        
+        
+        let dob = self.view.viewWithTag(4) as! UILabel
+        
+        dob.text = playerdetails.birthDate
+        
+        let nationality = self.view.viewWithTag(5) as! UILabel
+        
+        nationality.text = playerdetails.nationality
+        
+        
+        
+        let team = self.view.viewWithTag(6) as! UILabel
+        
+        team.text = playerdetails.team
+        
+        
+        
+        let pos = self.view.viewWithTag(7) as! UILabel
+        
+        pos.text = playerdetails.position
+        
+        
+        let shrtNumber = self.view.viewWithTag(8) as! UILabel
+        
+        shrtNumber.text = playerdetails.shirtNumber
+        
+        let nationFlag = self.view.viewWithTag(12) as! UIImageView
+        let nationUrl =  NSURL(string: playerdetails.nationFlag)
+        nationFlag.sd_setImageWithURL(nationUrl)
+        
+        let teamFlag = self.view.viewWithTag(13) as! UIImageView
+        let teamUrl =  NSURL(string: playerdetails.nationFlag)
+        teamFlag.sd_setImageWithURL(teamUrl)
         
         return cell
     }
