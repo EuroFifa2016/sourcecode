@@ -118,10 +118,10 @@ class MatchViewController: ActivityIndicatorViewController {
         
         
         
-            cell.firstTeamLabel.text = self.match[section].mat
+            //cell.firstTeamLabel.text = self.match[section].mat
             
             
-                    cell.secondTeamLabel.text = self.match[section].matchDict["team2_name"]
+                 //   cell.secondTeamLabel.text = self.match[section].matchDict["team2_name"]
             
 //                    cell.pointsLabel.text =  arrayDict[indexPath.section]["group_stage"]![indexPath.row]["team2_name"]
 //            

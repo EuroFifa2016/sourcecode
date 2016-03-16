@@ -27,7 +27,7 @@ class GalleryViewController: UIViewController,UIScrollViewDelegate,UIGestureReco
     override func viewDidLoad() {
         super.viewDidLoad()
         print(arrayOfImages)
-        
+        print(self.view.frame.size.width)
         
        // setup()
     }
@@ -66,11 +66,18 @@ class GalleryViewController: UIViewController,UIScrollViewDelegate,UIGestureReco
     
     func zoomIn(recognizer:UITapGestureRecognizer){
         
-        let touchPoint: CGPoint = recognizer.locationInView(imageViewMain)
-        let newZoomScale: CGFloat = (scrollViewMain.maximumZoomScale + scrollViewMain.minimumZoomScale) / 2
-       self.zoomToPoint(touchPoint, withScale: newZoomScale, animated: true)
+        scrollViewMain.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height);
+
         
-     imageViewMain.transform = CGAffineTransformMakeScale(2, 2)
+//        let touchPoint: CGPoint = recognizer.locationInView(imageViewMain)
+//        let newZoomScale: CGFloat = (scrollViewMain.maximumZoomScale + scrollViewMain.minimumZoomScale) / 2
+//       self.zoomToPoint(touchPoint, withScale: newZoomScale, animated: true)
+        
+        scrollViewMain.setZoomScale(scrollViewMain.minimumZoomScale, animated:true)
+        scrollViewMain.setZoomScale(scrollViewMain.maximumZoomScale, animated:true)
+
+        
+    // imageViewMain.transform = CGAffineTransformMakeScale(2, 2)
         scrollViewMain .layoutSubviews()
         
        // scrollViewMain.contentSize = CGSize(width:self.view.frame.width*2, height: self.view.frame.height*2);
@@ -100,7 +107,7 @@ class GalleryViewController: UIViewController,UIScrollViewDelegate,UIGestureReco
     func zoomOut(sender: UITapGestureRecognizer)
     {
 //        if scrollViewMain.zoomScale != scrollViewMain.minimumZoomScale{
-//        scrollViewMain.setZoomScale(scrollViewMain.minimumZoomScale, animated:true)
+       scrollViewMain.setZoomScale(scrollViewMain.minimumZoomScale, animated:true)
 //        scrollViewMain.layoutSubviews()
 //        }
         scrollViewMain.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height);
@@ -123,10 +130,20 @@ class GalleryViewController: UIViewController,UIScrollViewDelegate,UIGestureReco
 
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
         
+        scrollViewMain.setZoomScale(scrollViewMain.minimumZoomScale, animated:true)
+        scrollViewMain.layoutSubviews()
+
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionCell", forIndexPath: indexPath)
+        
+       
+        
         scrollViewMain = (cell.contentView.viewWithTag(202) as? UIScrollView)!
             imageViewMain = (cell.contentView.viewWithTag(201) as? UIImageView)!
+        //imageViewMain.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
             let url = NSURL(string: (arrayOfImages[ indexPath.row].valueForKey("path") as? String)!)
+        
+        
         
          imageViewMain.sd_setImageWithURL(url!, placeholderImage: UIImage(named: "icon"))
                    
@@ -157,6 +174,15 @@ class GalleryViewController: UIViewController,UIScrollViewDelegate,UIGestureReco
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         
         return imageViewMain
+    }
+    
+     func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
+            
+            
+          return CGSizeMake(self.view.frame.size.width , self.view.frame.size.height)
+
     }
     
     

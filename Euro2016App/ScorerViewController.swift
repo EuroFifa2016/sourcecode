@@ -25,7 +25,9 @@ class ScorerViewController: ActivityIndicatorViewController,UITableViewDataSourc
     
     override func viewWillAppear(animated: Bool) {
         self .loadScorerPlayers()
-        self.navigationController?.navigationBar.topItem?.title = "News"
+
+    
+        //self.navigationController?.navigationBar.topItem?.title = "News"
         
         
         
@@ -120,7 +122,7 @@ class ScorerViewController: ActivityIndicatorViewController,UITableViewDataSourc
         cell.playerName.text = self.arr_ScoreDetail[indexPath.row].valueForKey("player_name") as? String
         cell.mgLabel.text = self.arr_ScoreDetail[indexPath.row].valueForKey("goals") as? String
         cell.countryName.text = self.arr_ScoreDetail[indexPath.row].valueForKey("nationality") as? String
-        cell.miss_goalLabel.text = self.arr_ScoreDetail[indexPath.row].valueForKey("mins_goals") as? String
+        cell.miss_goalLabel.text = (self.arr_ScoreDetail[indexPath.row].valueForKey("mins_goals") as? String)! + " min"
         
         let url = NSURL(string: (self.arr_ScoreDetail[indexPath.row].valueForKey("player_image") as? String)!)
        // let data = NSData(contentsOfURL: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check
