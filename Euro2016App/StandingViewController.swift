@@ -127,6 +127,16 @@ class StandingViewController: ActivityIndicatorViewController,UITableViewDataSou
         
         return footerView
     }
+    
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+
     /*
     // MARK: - Navigation
 

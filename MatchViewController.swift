@@ -13,11 +13,6 @@ class MatchViewController: ActivityIndicatorViewController,UITableViewDelegate,U
     
     @IBOutlet weak var matchTable: UITableView!
     
-//    var section1 : Int = 0
-//    var section2 : Int!
-//    var section3 : Int!
-//    var section4 : Int!
-//    var section5 : Int!
     //MARK: Properties
    // var match = [Match]()
     
@@ -28,11 +23,7 @@ class MatchViewController: ActivityIndicatorViewController,UITableViewDelegate,U
     var array3 : NSMutableArray = NSMutableArray()
     var array4 : NSMutableArray = NSMutableArray()
     var array5 : NSMutableArray = NSMutableArray()
-    var dict1:[String:AnyObject] = [:]
-    var dict2:[String:AnyObject] = [:]
-    var dict3:[String:AnyObject] = [:]
-    var dict4:[String:AnyObject] = [:]
-    var dict5:[String:AnyObject] = [:]
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,70 +94,7 @@ class MatchViewController: ActivityIndicatorViewController,UITableViewDelegate,U
                     self.matchTable.dataSource = self
                     self.matchTable .reloadData()
                 
-                /* khushboo            {
-                    var array1:[NSDictionary] = []
-                    let arrayTwo:[String] = ["group_stage","round_of_16","quater_final","semifinal","final"]
-            
-                    for index in response.objectForKey("matchesInfo") as! NSArray
-                    {
-                        
-                        if index.objectForKey("group_stage")as! String == "1"
-                        {
-                           
-                            
-                        array1 += [index as! NSDictionary]
-                             self.dict1   = ["groupName":arrayTwo[0],"groupInfo":array1]
-                            
-                            
-                        }
-                        else if  index.objectForKey("round_of_16")as! String == "1"
-                        {
-                            
-                            array2 += [index as! NSDictionary]
-                            
-                            self.dict2   = ["groupName":arrayTwo[1],"groupInfo":array2]
-                           
-                            
-                            
-                        }
-                        
-                        else if index.objectForKey("quater_final")as! String == "1"
-                        {
-                            array3 += [index as! NSDictionary]
-                             self.dict3   = ["groupName":arrayTwo[2],"groupInfo":array3]
-                            
-                        }
-                        
-                        else if index.objectForKey("semifinal")as! String == "1"
-                        {
-                            array4 += [index as! NSDictionary]
-                             self.dict4   = ["groupName":arrayTwo[3],"groupInfo":array4]
-                            
-                          
-                        }
-                        else if index.objectForKey("final")as! String == "1"
-                        {
-                            array5 += [index as! NSDictionary]
-                             self.dict5   = ["groupName":arrayTwo[4],"groupInfo":array5]
-                            
-                        }
-
-                        
-                    }
-            
-                    print(self.dict1);
-            
-                    self.array += [self.dict1,self.dict2,self.dict3,self.dict4,self.dict5]
-
-                     print(self.array)
-                     self.matchTable.delegate = self
-                     self.matchTable.dataSource = self
-                    self.matchTable .reloadData()
-            
-                }
-                *////
-
-                
+                    
         }
         
         
@@ -177,37 +105,48 @@ class MatchViewController: ActivityIndicatorViewController,UITableViewDelegate,U
         }
         
     }
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-       
-        var sectionName : String =  ""
+        func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let header = UIView(frame: CGRectMake(0, 0, view.frame.size.width, 25))
+        header.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.65)
+        
+        
+        let label = UILabel(frame: CGRectMake(10, 10, header.frame.size.width-50, 25))
+        
+        label.textAlignment = NSTextAlignment.Left
+        label.textColor = UIColor .whiteColor()
+        label.font = UIFont(name: "Quicksand-Regular", size: 14)
         switch (section)
         {
         case 0:
-            sectionName = " sectionName 2"
-            break;
-        case 1:
-            sectionName = "Section 2"
-        case 2:
-            sectionName = " sectionName 3"
-            break;
-        case 3:
-            sectionName = "Section 4"
-        
-        case 2:
-            sectionName = "Section 5"
+            
+            label.text = "Group Stage Matches"
 
-        default:
-            sectionName = ""
-            break;
+            
+            
+        case 1:
+            label.text = "Round of 16"
+            
+            
+        case 2:
+           label.text = "Quarter finals"
+            
+        case 3:
+            label.text = "Semi final"
+            
+        case 4:
+            label.text = "Final Match"
+            
+        default :
+            print("done")
         }
-        return sectionName
         
-    }
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let vw = UIView()
-       vw.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.65)
         
-        return vw
+        header.addSubview(label)
+        
+        return header
+
+
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
@@ -262,85 +201,184 @@ class MatchViewController: ActivityIndicatorViewController,UITableViewDelegate,U
         {
         case 0:
         
-            
+            print(indexPath.row)
             cell.firstTeamLabel.text = self.array1[indexPath.row]["team1_name"] as? String
             
             cell.secondTeamLabel.text = self.array1[indexPath.row]["team2_name"] as? String
             
-            let points:String = "\(self.array1[indexPath.row]["team1_goals"]) :  \(self.array1[indexPath.row]["team2_goals"])"
+            let team1goals = self.array1[indexPath.row]["team1_goals"] as? String
+             let team2goals = self.array1[indexPath.row]["team2_goals"] as? String
             
-            cell.pointsLabel.text =  points
+            
+            
+            cell.pointsLabel.text =  team1goals! + "  :  " + team2goals!
+            
+            
+            let imageUrl1 = NSURL(string: self.array1[indexPath.row]["team1_flag"] as! String  )
+            
+            cell.firstTeamImageView.sd_setImageWithURL(imageUrl1)
+            
+            let imageUrl2 = NSURL(string: self.array1[indexPath.row]["team2_flag"] as! String  )
+            
+            
+           cell.secondTeamImageView.sd_setImageWithURL(imageUrl2)
+            
+            if indexPath.row == 0
+            {
+                cell.timeLabel.hidden = false
+                cell.timeLabel.text=self.array1[indexPath.row]["date"] as? String
+                
+            }
+            else
+            {
+                cell.timeLabel.hidden = true
+            }
 
         case 1:
+            
+             print(indexPath.row)
             cell.firstTeamLabel.text = self.array2[indexPath.row]["team1_name"] as? String
+            
+           
+            
             
             cell.secondTeamLabel.text = self.array2[indexPath.row]["team2_name"] as? String
             
-            let points:String = "\(self.array2[indexPath.row]["team1_goals"]) :  \(self.array2[indexPath.row]["team2_goals"])"
+            let team1goals = self.array2[indexPath.row]["team1_goals"] as? String
+            let team2goals = self.array2[indexPath.row]["team2_goals"] as? String
             
-            cell.pointsLabel.text =  points
+            
+            
+            cell.pointsLabel.text =  team1goals! + "  :  " + team2goals!
+            
+            let imageUrl1 = NSURL(string: self.array2[indexPath.row]["team1_flag"] as! String  )
+            
+            cell.firstTeamImageView.sd_setImageWithURL(imageUrl1)
+            
+            let imageUrl2 = NSURL(string: self.array2[indexPath.row]["team2_flag"] as! String  )
+            
+            
+            cell.secondTeamImageView.sd_setImageWithURL(imageUrl2)
+            
+             if indexPath.row == 0
+             {
+                cell.timeLabel.hidden = false
+                cell.timeLabel.text=self.array2[indexPath.row]["date"] as? String
+                
+             }
+             else
+             {
+                cell.timeLabel.hidden = true
+            }
+            
 
+            
+           
        case 2:
             cell.firstTeamLabel.text = self.array3[indexPath.row]["team1_name"] as? String
             
             cell.secondTeamLabel.text = self.array3[indexPath.row]["team2_name"] as? String
             
-            let points:String = "\(self.array3[indexPath.row]["team1_goals"]) :  \(self.array3[indexPath.row]["team2_goals"])"
+            cell.secondTeamLabel.text = self.array2[indexPath.row]["team2_name"] as? String
             
-            cell.pointsLabel.text =  points
+            let team1goals = self.array3[indexPath.row]["team1_goals"] as? String
+            let team2goals = self.array3[indexPath.row]["team2_goals"] as? String
+            
+           cell.pointsLabel.text =  team1goals! + "  :  " + team2goals!
+            let imageUrl1 = NSURL(string: self.array3[indexPath.row]["team1_flag"] as! String  )
+            
+            cell.firstTeamImageView.sd_setImageWithURL(imageUrl1)
+            
+            let imageUrl2 = NSURL(string: self.array3[indexPath.row]["team2_flag"] as! String  )
+            
+            
+            cell.secondTeamImageView.sd_setImageWithURL(imageUrl2)
+            
+            if indexPath.row == 0
+            {
+                cell.timeLabel.hidden = false
+                cell.timeLabel.text=self.array3[indexPath.row]["date"] as? String
+                
+            }
+            else
+            {
+                cell.timeLabel.hidden = true
+            }
+
+            
+
        case 3:
+        
             cell.firstTeamLabel.text = self.array4[indexPath.row]["team1_name"] as? String
             
             cell.secondTeamLabel.text = self.array4[indexPath.row]["team2_name"] as? String
             
-            let points:String = "\(self.array4[indexPath.row]["team1_goals"]) :  \(self.array4[indexPath.row]["team2_goals"])"
+            let team1goals = self.array3[indexPath.row]["team1_goals"] as? String
+            let team2goals = self.array3[indexPath.row]["team2_goals"] as? String
             
-            cell.pointsLabel.text =  points
+            cell.pointsLabel.text =  team1goals! + "  :  " + team2goals!
+            
+            let imageUrl1 = NSURL(string: self.array4[indexPath.row]["team1_flag"] as! String  )
+            
+            cell.firstTeamImageView.sd_setImageWithURL(imageUrl1)
+            
+            let imageUrl2 = NSURL(string: self.array4[indexPath.row]["team2_flag"] as! String  )
+            
+            cell.secondTeamImageView.sd_setImageWithURL(imageUrl2)
+            
+            if indexPath.row == 0
+            {
+                cell.timeLabel.hidden = false
+                cell.timeLabel.text=self.array4[indexPath.row]["date"] as? String
+                
+            }
+            else
+            {
+                cell.timeLabel.hidden = true
+            }
+            
+
+
+            
+           
+
        case 4:
             cell.firstTeamLabel.text = self.array5[indexPath.row]["team1_name"] as? String
             
             cell.secondTeamLabel.text = self.array5[indexPath.row]["team2_name"] as? String
             
-            let points:String = "\(self.array5[indexPath.row]["team1_goals"]) :  \(self.array5[indexPath.row]["team2_goals"])"
+            let team1goals = self.array3[indexPath.row]["team1_goals"] as? String
+            let team2goals = self.array3[indexPath.row]["team2_goals"] as? String
             
-            cell.pointsLabel.text =  points
+            cell.pointsLabel.text =  team1goals! + "  :  " + team2goals!
+            
+            let imageUrl1 = NSURL(string: self.array5[indexPath.row]["team1_flag"] as! String  )
+            
+            cell.firstTeamImageView.sd_setImageWithURL(imageUrl1)
+            
+            let imageUrl2 = NSURL(string: self.array5[indexPath.row]["team2_flag"] as! String  )
+            
+            cell.secondTeamImageView.sd_setImageWithURL(imageUrl2)
+            
+            if indexPath.row == 0
+            {
+                cell.timeLabel.hidden = false
+                cell.timeLabel.text=self.array5[indexPath.row]["date"] as? String
+                
+            }
+            else
+            {
+                cell.timeLabel.hidden = true
+            }
+
+            
+          
             
         default:
             print("Done")
         }
 
-          /*
-            print(self.array[indexPath.section]["groupInfo"]![indexPath.row]["team1_name"] as? String)
-            
-            cell.firstTeamLabel.text = self.array[indexPath.section]["groupInfo"]![indexPath.row]["team1_name"] as? String
-            
-            cell.secondTeamLabel.text = self.array[indexPath.section]["groupInfo"]![indexPath.row]["team2_name"] as? String
-            
-            let points:String = "\(self.array[indexPath.section]["groupInfo"]![indexPath.row]["team1_goals"]) :  \(self.array[indexPath.section]["groupInfo"]![indexPath.row]["team2_goals"])"
-            
-            cell.pointsLabel.text =  points
-        */
         
-        
-        
-            
-//            let imageUrl1 = NSURL(string: self.array[indexPath.section]["groupInfo"]!["team1_flag"]!  )
-//            
-//            cell.firstTeamImageView.sd_setImageWithURL(imageUrl1)
-//            
-//          let imageUrl2 = NSURL(string: self.array[indexPath.section]["groupInfo"]!["team2_flag"]!  )
-//        
-//            
-//            cell.secondTeamImageView.sd_setImageWithURL(imageUrl2)
-       
-      
-        
-        
-        //                    if height=="1"
-        //                    {
-        //                        cell.timeLabel.text=match[indexPath.section].matchDictArray[indexPath.row]["DayandDate"]
-        //                    } else {
-        //                      cell.timeLabel.hidden = true
         
         
         
@@ -353,10 +391,23 @@ class MatchViewController: ActivityIndicatorViewController,UITableViewDelegate,U
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40.0
     }
-    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 20))
+        footerView.backgroundColor = UIColor.clearColor()
+        
+        
+        return footerView
+    }
 
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return UITableViewAutomaticDimension
+    }
     
-    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+//
     /*
     // MARK: - Navigation
     

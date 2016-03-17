@@ -145,13 +145,6 @@ class NewsViewController: ActivityIndicatorViewController,UITableViewDataSource 
         }
         return cell
       
-       
-        
-        
-        
-        
-        
-        
         
     }
     

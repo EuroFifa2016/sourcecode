@@ -24,9 +24,7 @@ class NewsGalleryViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.topItem?.title = ""
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        CustomButton.setBackBarButtonItem(self)
         self.navigationItem.title = "GALLERY"
         // title = "GALLERY"
         

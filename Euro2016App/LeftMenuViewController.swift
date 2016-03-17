@@ -97,22 +97,20 @@ class LeftMenuViewController: UIViewController {
 //            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: viewController)
              sideMenuViewController?.hideMenuViewController()
              break
-         case 1:
+//         case 1:
+//
+//            let viewController = storyboard!.instantiateViewControllerWithIdentifier("ScorerViewController") as! ScorerViewController
+//            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: viewController)
+//            sideMenuViewController?.hideMenuViewController()
+//            break
 
-            let viewController = storyboard!.instantiateViewControllerWithIdentifier("ScorerViewController") as! ScorerViewController
-            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: viewController)
-            sideMenuViewController?.hideMenuViewController()
-            break
+//         case 4:
+//            
+//            let viewController = storyboard!.instantiateViewControllerWithIdentifier("SettingVC") as! SettingVC
+//            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: viewController)
+//            sideMenuViewController?.hideMenuViewController()
 
-         case 4:
-            
-            let viewController = storyboard!.instantiateViewControllerWithIdentifier("SettingVC") as! SettingVC
-            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: viewController)
-            sideMenuViewController?.hideMenuViewController()
-
-            
-            
-            break
+               
           default:
               break
           }
