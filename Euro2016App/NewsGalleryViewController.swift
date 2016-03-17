@@ -18,6 +18,9 @@ class NewsGalleryViewController: UIViewController  {
     //    var i = Int()
     //    var checkStatus : Int = 0
     var galleryName = []
+    
+    
+    
     @IBOutlet var collectionView: UICollectionView!
     
     
