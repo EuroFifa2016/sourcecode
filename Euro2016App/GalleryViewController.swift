@@ -26,10 +26,11 @@ class GalleryViewController: UIViewController,UIScrollViewDelegate,UIGestureReco
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.topItem?.title = ""
+        
         print(arrayOfImages)
         print(self.view.frame.size.width)
         
-       // setup()
     }
 
     override func viewDidLayoutSubviews() {
@@ -43,84 +44,6 @@ class GalleryViewController: UIViewController,UIScrollViewDelegate,UIGestureReco
         // Dispose of any resources that can be recreated.
     }
     
-    func setup(){
-        scrollViewMain.delegate = self
-        scrollViewMain.maximumZoomScale = 4.0
-        scrollViewMain.minimumZoomScale = 1.0
-        scrollViewMain .addSubview(imageViewMain)
-        
-        let tapTwice = UITapGestureRecognizer(target: self, action: "zoomIn:")
-        let tapOnce = UITapGestureRecognizer(target: self, action: "zoomOut:")
-        tapTwice.numberOfTapsRequired = 2
-        tapOnce.numberOfTapsRequired = 1
-        tapOnce.delegate = self
-        tapTwice.delegate = self
-        
-        scrollViewMain.delegate = self
-        scrollViewMain.bouncesZoom = true
-        scrollViewMain.decelerationRate = UIScrollViewDecelerationRateFast
-        scrollViewMain.addGestureRecognizer(tapTwice)
-        scrollViewMain.addGestureRecognizer(tapOnce)
-
-    }
-    
-    func zoomIn(recognizer:UITapGestureRecognizer){
-        
-        scrollViewMain.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height);
-
-        
-//        let touchPoint: CGPoint = recognizer.locationInView(imageViewMain)
-//        let newZoomScale: CGFloat = (scrollViewMain.maximumZoomScale + scrollViewMain.minimumZoomScale) / 2
-//       self.zoomToPoint(touchPoint, withScale: newZoomScale, animated: true)
-        
-        scrollViewMain.setZoomScale(scrollViewMain.minimumZoomScale, animated:true)
-        scrollViewMain.setZoomScale(scrollViewMain.maximumZoomScale, animated:true)
-
-        
-    // imageViewMain.transform = CGAffineTransformMakeScale(2, 2)
-        scrollViewMain .layoutSubviews()
-        
-       // scrollViewMain.contentSize = CGSize(width:self.view.frame.width*2, height: self.view.frame.height*2);
-        
-       /* if(scrollViewMain.zoomScale != scrollViewMain.minimumZoomScale){
-            if isDoubleTap == false {
-                scrollViewMain.setZoomScale(scrollViewMain.minimumZoomScale, animated: true)
-                scrollViewMain .layoutSubviews()
-            }
-            isFirstTap = true
-            isDoubleTap = true
-        }else
-        {
-            if isDoubleTap {
-                
-                let touchPoint: CGPoint = recognizer.locationInView(imageViewMain)
-                let newZoomScale: CGFloat = (scrollViewMain.maximumZoomScale + scrollViewMain.minimumZoomScale) / 2
-                self.zoomToPoint(touchPoint, withScale: newZoomScale, animated: true)
-
-            }
-        }*/
-
-    }
-    
-    
-    
-    func zoomOut(sender: UITapGestureRecognizer)
-    {
-//        if scrollViewMain.zoomScale != scrollViewMain.minimumZoomScale{
-       scrollViewMain.setZoomScale(scrollViewMain.minimumZoomScale, animated:true)
-//        scrollViewMain.layoutSubviews()
-//        }
-        scrollViewMain.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height);
-       imageViewMain.transform = CGAffineTransformIdentity
-    }
-    
-    func zoomToPoint(zoomPoint: CGPoint, withScale scale: CGFloat, animated: Bool) {
-        let xsize: CGFloat = self.view.bounds.size.width / scale
-        let ysize: CGFloat = self.view.bounds.size.height / scale
-        scrollViewMain.zoomToRect(CGRectMake(zoomPoint.x - xsize / 2, zoomPoint.y - ysize / 2, xsize, ysize), animated: true)
-    }
-    
-  
     // Delegates Method Of Collection View
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
@@ -140,30 +63,33 @@ class GalleryViewController: UIViewController,UIScrollViewDelegate,UIGestureReco
         
         scrollViewMain = (cell.contentView.viewWithTag(202) as? UIScrollView)!
             imageViewMain = (cell.contentView.viewWithTag(201) as? UIImageView)!
-        //imageViewMain.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
             let url = NSURL(string: (arrayOfImages[ indexPath.row].valueForKey("path") as? String)!)
+            imageViewMain.sd_setImageWithURL(url!, placeholderImage: UIImage(named: "icon"))
         
-        
-        
-         imageViewMain.sd_setImageWithURL(url!, placeholderImage: UIImage(named: "icon"))
-                   
-        let tapTwice = UITapGestureRecognizer(target: self, action: "zoomIn:")
-        let tapOnce = UITapGestureRecognizer(target: self, action: "zoomOut:")
+        let tapTwice = UITapGestureRecognizer(target: self, action: "zoom:")
         tapTwice.numberOfTapsRequired = 2
-        tapOnce.numberOfTapsRequired = 1
+        tapTwice.numberOfTouchesRequired = 1
         tapTwice.delegate = self
-        tapOnce.delegate = self
-        
         scrollViewMain.delegate = self
         scrollViewMain.bouncesZoom = true
-        scrollViewMain.decelerationRate = UIScrollViewDecelerationRateFast
+     //   scrollViewMain.decelerationRate = UIScrollViewDecelerationRateFast
 
         scrollViewMain.addGestureRecognizer(tapTwice)
-        scrollViewMain.addGestureRecognizer(tapOnce)
-      
-
         
         return cell
+    }
+    
+    func zoom(tapGesture: UITapGestureRecognizer) {
+        if (scrollViewMain.zoomScale == scrollViewMain.minimumZoomScale) {
+            
+            scrollViewMain.contentSize = CGSize(width: self.view.frame.width * 2, height: self.view.frame.height * 2);
+            scrollViewMain.setZoomScale(scrollViewMain.maximumZoomScale, animated:true)
+
+        } else {
+           // scrollViewMain.contentSize = CGSize(width: self.view.frame.width , height: self.view.frame.height );
+            scrollViewMain.setZoomScale(scrollViewMain.minimumZoomScale, animated: true)
+            imageViewMain.transform = CGAffineTransformIdentity
+        }
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
@@ -179,7 +105,6 @@ class GalleryViewController: UIViewController,UIScrollViewDelegate,UIGestureReco
      func collectionView(collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize{
-            
             
           return CGSizeMake(self.view.frame.size.width , self.view.frame.size.height)
 

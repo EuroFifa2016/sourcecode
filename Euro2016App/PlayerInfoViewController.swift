@@ -66,7 +66,7 @@ class PlayerInfoViewController: UIViewController {
             let lightBlur = UIBlurEffect(style: UIBlurEffectStyle.Dark)
             // 2
             let blurView = UIVisualEffectView(effect: lightBlur)
-            blurView.frame = blurImageView.bounds
+            blurView.frame = CGRectMake(0, 0,self.view.frame.size.width, self.view.frame.size.height)
             blurView .alpha = 0.9
             // 3
             blurImageView.addSubview(blurView)
