@@ -10,7 +10,6 @@
 		0208F53B1C61FBC40033ACC2 /* SideBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0208F53A1C61FBC40033ACC2 /* SideBarTableViewCell.swift */; };
 		02316B131C55E58900AE5BDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02316B121C55E58900AE5BDD /* AppDelegate.swift */; };
 		02316B151C55E58900AE5BDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02316B141C55E58900AE5BDD /* ViewController.swift */; };
-		02316B181C55E58900AE5BDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02316B161C55E58900AE5BDD /* Main.storyboard */; };
 		02316B1A1C55E58900AE5BDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02316B191C55E58900AE5BDD /* Assets.xcassets */; };
 		02316B1D1C55E58900AE5BDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02316B1B1C55E58900AE5BDD /* LaunchScreen.storyboard */; };
 		02316B391C55FF4500AE5BDD /* Quicksand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 02316B361C55FF4500AE5BDD /* Quicksand-Bold.otf */; };
@@ -85,6 +84,7 @@
 		55E185D81C7C7B9E00C459D8 /* RegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E185D71C7C7B9E00C459D8 /* RegisterTableViewCell.swift */; };
 		55F18E461C770624000C6F77 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F18E451C770624000C6F77 /* Alamofire.framework */; };
 		61E460F11C98144A0076ECFD /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E460F01C9814490076ECFD /* PlayerDetail.swift */; };
+		61EE03221C9AC9EE00E94933 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61EE03211C9AC9EE00E94933 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,7 +92,6 @@
 		02316B0F1C55E58900AE5BDD /* Euro2016App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Euro2016App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02316B121C55E58900AE5BDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02316B141C55E58900AE5BDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		02316B171C55E58900AE5BDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02316B191C55E58900AE5BDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02316B1C1C55E58900AE5BDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02316B1E1C55E58900AE5BDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -175,6 +174,7 @@
 		55E185D71C7C7B9E00C459D8 /* RegisterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTableViewCell.swift; sourceTree = "<group>"; };
 		55F18E451C770624000C6F77 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
 		61E460F01C9814490076ECFD /* PlayerDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetail.swift; sourceTree = "<group>"; };
+		61EE03211C9AC9EE00E94933 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B78DCDC942EC42B22951A2CC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCAA624B9FF2CE5BE966F601 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E99C8F23BA81581C629014A3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -236,7 +236,7 @@
 				02316B351C55FF4500AE5BDD /* CustomFont */,
 				02316B121C55E58900AE5BDD /* AppDelegate.swift */,
 				02316B141C55E58900AE5BDD /* ViewController.swift */,
-				02316B161C55E58900AE5BDD /* Main.storyboard */,
+				61EE03211C9AC9EE00E94933 /* Main.storyboard */,
 				02316B191C55E58900AE5BDD /* Assets.xcassets */,
 				02316B1B1C55E58900AE5BDD /* LaunchScreen.storyboard */,
 				02316B1E1C55E58900AE5BDD /* Info.plist */,
@@ -488,9 +488,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				02316B1D1C55E58900AE5BDD /* LaunchScreen.storyboard in Resources */,
+				61EE03221C9AC9EE00E94933 /* Main.storyboard in Resources */,
 				02316B1A1C55E58900AE5BDD /* Assets.xcassets in Resources */,
 				02316B391C55FF4500AE5BDD /* Quicksand-Bold.otf in Resources */,
-				02316B181C55E58900AE5BDD /* Main.storyboard in Resources */,
 				02B078141C68A420005B3CE1 /* IQKeyboardManager.bundle in Resources */,
 				02B8ADF51C71A16A003DB3C7 /* StandingTableSectionHeader.xib in Resources */,
 				02316B3B1C55FF4500AE5BDD /* Quicksand-Regular.otf in Resources */,
@@ -635,14 +635,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		02316B161C55E58900AE5BDD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				02316B171C55E58900AE5BDD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		02316B1B1C55E58900AE5BDD /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

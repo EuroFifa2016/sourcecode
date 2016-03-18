@@ -201,22 +201,16 @@ class MatchViewController: ActivityIndicatorViewController,UITableViewDelegate,U
         {
         case 0:
         
-<<<<<<< HEAD
             print(indexPath.row)
             cell.firstTeamLabel.text = self.array1[indexPath.row]["team1_name"] as? String
-=======
         
             //cell.firstTeamLabel.text = self.match[section].mat
->>>>>>> 7250e5af43cdf49e07beeea20c39c5b48a71b635
             
             cell.secondTeamLabel.text = self.array1[indexPath.row]["team2_name"] as? String
             
-<<<<<<< HEAD
             let team1goals = self.array1[indexPath.row]["team1_goals"] as? String
              let team2goals = self.array1[indexPath.row]["team2_goals"] as? String
-=======
                  //   cell.secondTeamLabel.text = self.match[section].matchDict["team2_name"]
->>>>>>> 7250e5af43cdf49e07beeea20c39c5b48a71b635
             
             
             

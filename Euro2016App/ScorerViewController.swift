@@ -64,32 +64,6 @@ class ScorerViewController: ActivityIndicatorViewController,UITableViewDataSourc
             if response.objectForKey("result") as? Bool == true {
                 
                 print(response)
-//                
-//                for index in response.objectForKey("playersInfo") as! NSArray{
-//                    
-//                   // PlayerDetail.playerImage =
-//                   
-//                    
-////                    playerdetails.playerImage = (index.objectForKey("player_image") ?? "") as! String
-////                    
-////                    playerdetails.playerName = (index.objectForKey("player_name") ?? "") as! String
-////                    playerdetails.weight = (index.objectForKey("weight") ?? "") as! String
-////                     playerdetails.height = (index.objectForKey("height") ?? "") as! String
-////                     playerdetails.birthDate = (index.objectForKey("dob") ?? "") as! String
-////                     playerdetails.nationality = (index.objectForKey("nationality") ?? "") as! String
-////                     playerdetails.nationFlag = (index.objectForKey("nationality") ?? "") as! String
-////                     playerdetails.teamFlag = (index.objectForKey("team_flag") ?? "")as! String
-////                     playerdetails.team = (index.objectForKey("team_name") ?? "") as! String
-////                     playerdetails.position = (index.objectForKey("position") ?? "") as! String
-////                    playerdetails.shirtNumber = (index.objectForKey("shirt_number") ?? "") as! String
-//                    
-//                    let scroreObj = PlayerDetail(playerImage: playerImage, playerName: fullName, weight: weight, height: height,birthDate: birthDate, nationality: nation, nationFlag: nationFlag, teamFlag: teamFlag, team: team, position: position, shirtNumber: shirtNumber)
-//
-//                    
-//                    self.scorers += [scroreObj]
-//
-//                }
-//                
 
                 
                 self.arr_ScoreDetail = response.valueForKey("playersInfo") as! NSMutableArray
@@ -98,7 +72,7 @@ class ScorerViewController: ActivityIndicatorViewController,UITableViewDataSourc
                 {
                     self.tableView_Score .reloadData()
                 }
-                self.tableView_Score.reloadData()
+               
             }
         }
     }
