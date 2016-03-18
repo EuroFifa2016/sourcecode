@@ -45,7 +45,7 @@ class LeftMenuViewController: UIViewController {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 5
+        return 6
     }
     
     
@@ -56,9 +56,9 @@ class LeftMenuViewController: UIViewController {
         cell.backgroundColor = UIColor.clearColor()
         
         // Fetches the appropriate player for the data source layout.
-        let titles: [String] = ["Home", "Predictions", "Statistics", "My Team", "Settings"]
+        let titles: [String] = ["Home", "Predictions", "Statistics", "My Team", "Settings", "Logout"]
         
-        let images: [String] = ["Image1", "Image3", "Image6", "Image2", "Image5"]
+        let images: [String] = ["Image1", "Image3", "Image6", "Image2", "Image5",""]
         
         cell.sidebarLabel.text = titles[indexPath.row]
         cell.sidebarImageView.image = UIImage(named: images[indexPath.row])
@@ -104,11 +104,11 @@ class LeftMenuViewController: UIViewController {
 //            sideMenuViewController?.hideMenuViewController()
 //            break
 
-//         case 4:
+         case 4:
 //            
-//            let viewController = storyboard!.instantiateViewControllerWithIdentifier("SettingVC") as! SettingVC
-//            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: viewController)
-//            sideMenuViewController?.hideMenuViewController()
+           let viewController = storyboard!.instantiateViewControllerWithIdentifier("SettingVC") as! SettingVC
+            sideMenuViewController?.contentViewController = UINavigationController(rootViewController: viewController)
+            sideMenuViewController?.hideMenuViewController()
 
                
           default:
