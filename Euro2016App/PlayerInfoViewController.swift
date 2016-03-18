@@ -16,7 +16,7 @@ class PlayerInfoViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = ""
 
-      self.navigationItem.title = "PLAYER"
+      self.navigationItem.title = "PLAYER 1"
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
