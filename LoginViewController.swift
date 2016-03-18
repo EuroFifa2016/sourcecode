@@ -107,9 +107,12 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate,G
                         super.progressBarDisplayer( false, view: self.view)
                         if response.objectForKey("result") as? Bool == true
                         {
-                            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
                             
-                            self.navigationController?.pushViewController(viewController, animated: true)
+                            self.loginPushViewController()
+                            
+//                            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
+//                            
+//                            self.navigationController?.pushViewController(viewController, animated: true)
                         }
                     })
                     
@@ -126,6 +129,14 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate,G
             super.progressBarDisplayer( false, view: self.view)
             
         }
+    }
+    
+    func loginPushViewController()
+    {
+        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
+        
+        self.navigationController?.pushViewController(viewController, animated: true)
+        
     }
     @IBAction func loginButtonAction(sender: AnyObject) {
         
@@ -214,9 +225,11 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate,G
                     if response.objectForKey("result") as? Bool == true
                     {
                         super.progressBarDisplayer( false, view: self.view)
-                        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
-                        
-                        self.navigationController?.pushViewController(viewController, animated: true)
+                        self.loginPushViewController()
+
+                        //                        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
+//                        
+//                        self.navigationController?.pushViewController(viewController, animated: true)
                     }
                     else
                     {
@@ -313,9 +326,11 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate,G
                         if response.objectForKey("result") as? Bool == true
                         {
                             super.progressBarDisplayer( false, view: self.view)
-                            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
-                            
-                           self.navigationController?.pushViewController(viewController, animated: true)
+                            self.loginPushViewController()
+
+                            //                            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
+//                            
+//                           self.navigationController?.pushViewController(viewController, animated: true)
                         }
                         else
                         {
@@ -361,9 +376,12 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate,G
                     super.progressBarDisplayer( false, view: self.view)
                     if response.objectForKey("result") as? Bool == true
                     {
-                        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
+                        self.loginPushViewController()
+
                         
-                        self.navigationController?.pushViewController(viewController, animated: true)
+//                        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
+//                        
+//                        self.navigationController?.pushViewController(viewController, animated: true)
                     }
                     else
                     {

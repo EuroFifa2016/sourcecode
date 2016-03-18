@@ -110,7 +110,9 @@ class LeftMenuViewController: UIViewController {
             sideMenuViewController?.contentViewController = UINavigationController(rootViewController: viewController)
             sideMenuViewController?.hideMenuViewController()
 
-               
+         case 5:
+            [self.navigationController?.popViewControllerAnimated(true)]
+            print("LogOut")
           default:
               break
           }
