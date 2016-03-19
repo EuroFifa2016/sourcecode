@@ -19,10 +19,23 @@ class VideoViewController: UIViewController {
     var urlString = String()
     var prevImage = NSURL()
     
+    var date = String()
+    var videoTitle = String()
+    var videoDescription = String()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.topItem?.title = ""
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        
         videoImageView.sd_setImageWithURL(prevImage)
+        
+        
         
     }
   
@@ -37,6 +50,11 @@ class VideoViewController: UIViewController {
             self.playerViewController.player!.play()
         }
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        title = "Videos"
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +72,15 @@ class VideoViewController: UIViewController {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)! as UITableViewCell
+        
+        let dateLabel = cell.contentView.viewWithTag(21)as? UILabel
+        dateLabel?.text = date
+        let titleLabel = cell.contentView.viewWithTag(22)as? UILabel
+        titleLabel?.text = videoTitle
+        let descriptionLabel = cell.contentView.viewWithTag(23)as? UITextView
+        descriptionLabel?.text = videoDescription
+        print(videoDescription)
+        
         return cell
     }
 

@@ -19,13 +19,14 @@ class ScorerViewController: ActivityIndicatorViewController,UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.topItem?.title = "SCORER"
 
         // Do any additional setup after loading the view.
     }
-    
+   
     override func viewWillAppear(animated: Bool) {
         self .loadScorerPlayers()
-
+ self.navigationController?.navigationBar.topItem?.title = "SCORER"
     
         //self.navigationController?.navigationBar.topItem?.title = "News"
         

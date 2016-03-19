@@ -235,7 +235,6 @@
 				02316B341C55FA1200AE5BDD /* ViewControllers */,
 				02316B351C55FF4500AE5BDD /* CustomFont */,
 				02316B121C55E58900AE5BDD /* AppDelegate.swift */,
-				02316B141C55E58900AE5BDD /* ViewController.swift */,
 				61EE03211C9AC9EE00E94933 /* Main.storyboard */,
 				02316B191C55E58900AE5BDD /* Assets.xcassets */,
 				02316B1B1C55E58900AE5BDD /* LaunchScreen.storyboard */,
@@ -256,15 +255,15 @@
 		02316B341C55FA1200AE5BDD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				320CCEA01C92B01B0073B634 /* SelectCountryViewController.swift */,
+				324AF06C1C8EEB89004A035B /* PlayersViewController.swift */,
+				324AF06E1C8EEBA2004A035B /* LoginViewController.swift */,
 				326FAEED1C97E1A300E4AF3B /* StandingViewController.swift */,
 				326FAEEB1C97DBBA00E4AF3B /* GalleryViewController.swift */,
 				326FAEE71C97DB6900E4AF3B /* VideoViewController.swift */,
 				326FAEE51C97DB3B00E4AF3B /* NewsViewController.swift */,
 				326578671C94246A0071EDFE /* CustomButton.swift */,
 				326FAEE91C97DB8300E4AF3B /* NewsGalleryViewController.swift */,
-				320CCEA01C92B01B0073B634 /* SelectCountryViewController.swift */,
-				324AF06C1C8EEB89004A035B /* PlayersViewController.swift */,
-				324AF06E1C8EEBA2004A035B /* LoginViewController.swift */,
 				324AF0721C8EEF55004A035B /* CountriesViewController.swift */,
 				55724DED1C7731CD009E06C7 /* ActivityIndicatorViewController.swift */,
 				02B8AE021C71EAEF003DB3C7 /* MatchViewController.swift */,
@@ -277,6 +276,7 @@
 				55E185D71C7C7B9E00C459D8 /* RegisterTableViewCell.swift */,
 				559F602C1C7D984B002BFBD1 /* ForgotPasswordViewController.swift */,
 				559F602E1C7DD898002BFBD1 /* SettingVC.swift */,
+				02316B141C55E58900AE5BDD /* ViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -736,7 +736,6 @@
 			baseConfigurationReference = CCAA624B9FF2CE5BE966F601 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets-2";
 				CLANG_ENABLE_MODULES = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -761,7 +760,6 @@
 			baseConfigurationReference = E99C8F23BA81581C629014A3 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets-2";
 				CLANG_ENABLE_MODULES = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

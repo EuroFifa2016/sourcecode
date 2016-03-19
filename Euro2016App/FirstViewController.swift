@@ -132,6 +132,7 @@ class FirstViewController: RGPageViewController, RGPageViewControllerDataSource,
                    if index==3
                    {
                        let dataViewController = storyboard!.instantiateViewControllerWithIdentifier("ScorerViewController") as! ScorerViewController
+                    dataViewController.title = "Scorer";
                        return dataViewController
                    }
                    else if index == 2

@@ -27,6 +27,12 @@ class StandingViewController: ActivityIndicatorViewController,UITableViewDataSou
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.topItem?.title = "STANDING"
+        
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

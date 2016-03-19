@@ -19,6 +19,14 @@ class NewsViewController: ActivityIndicatorViewController,UITableViewDataSource 
     var news = [News]()
     var rowHeight : CGFloat = 300.0
     var video = []
+    
+    var refreshControl = UIRefreshControl()
+    enum NSComparisonResult : Int {
+        case OrderedAscending
+        case OrderedSame
+        case OrderedDescending
+    }
+    
     //MARK: View Life Cycle
     
     override func viewWillAppear(animated: Bool) {
@@ -38,6 +46,9 @@ class NewsViewController: ActivityIndicatorViewController,UITableViewDataSource 
        // self .configureTableView()
        // self.loadSampleNews()
         self.loadSampleNews()
+        
+        refreshControl.addTarget(self, action: "didRefershList", forControlEvents: .ValueChanged)
+        self.tableView.addSubview(refreshControl)
         // Do any additional setup after loading the view.
     }
 
@@ -65,9 +76,8 @@ class NewsViewController: ActivityIndicatorViewController,UITableViewDataSource 
                     
                     let news = (index.objectForKey("title") ?? "") as! String
                     let descriptionNews = (index.objectForKey("description") ?? "") as! String
-                    let date = (index.objectForKey("created") ?? "") as! String
                     
-                   
+                    let date = (index.objectForKey("date") ?? "") as! String
                     let gallery = (index.objectForKey("gallery") ?? "") as! NSArray
                 
                    let type = (index.objectForKey("type") ?? "") as! String
@@ -142,7 +152,9 @@ class NewsViewController: ActivityIndicatorViewController,UITableViewDataSource 
                
            }
             }
+            
         }
+
         return cell
       
         
@@ -210,6 +222,52 @@ class NewsViewController: ActivityIndicatorViewController,UITableViewDataSource 
 
     }
     
+    // Pull to refresh
+    
+    func didRefershList(){
+        
+        
+        
+        super.progressBarDisplayer( true, view: self.view)
+        DataManager.GETAPI("getNewsFeed") { (response) -> Void in
+            super.progressBarDisplayer( false, view: self.view)
+            if response.objectForKey("result") as? Bool == true {
+                
+                print(response)
+                for index in response.objectForKey("newsInfo") as! NSArray
+                {
+                    
+                    
+                    let news = (index.objectForKey("title") ?? "") as! String
+                    let descriptionNews = (index.objectForKey("description") ?? "") as! String
+                    
+                    let date = (index.objectForKey("date") ?? "") as! String
+                    let gallery = (index.objectForKey("gallery") ?? "") as! NSArray
+                    
+                    let type = (index.objectForKey("type") ?? "") as! String
+                    
+                    let newsObj = News(news: news, date: date, gallery: gallery, descriptionNews: descriptionNews, typeOf: type)
+                    
+                    
+                    self.news += [newsObj]
+                    
+                    
+                }
+                
+                
+               // self.tableView .reloadData()
+                
+            }
+            
+        }
+
+        
+        
+        //tableView.reloadData()
+        print("refresh")
+        refreshControl.endRefreshing()
+    }
+    
     // MARK: - Table view Delegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
@@ -227,13 +285,17 @@ class NewsViewController: ActivityIndicatorViewController,UITableViewDataSource 
             
             let imageUrl = NSURL(string: newObj.gallery.valueForKey("screenshot").objectAtIndex(0) as! String)
            
-
+           
             
             
             print(newObj.gallery.valueForKey("path"))
             let viewController = storyboard!.instantiateViewControllerWithIdentifier("VideoViewController") as! VideoViewController
             viewController.urlString = newObj.gallery.valueForKey("path").objectAtIndex(0) as! String
             viewController.prevImage = imageUrl!
+            viewController.date = newObj.date
+            viewController.videoTitle = newObj.news
+            viewController.videoDescription = newObj.descriptionNews
+             print(viewController.videoDescription)
             self.navigationController?.pushViewController(viewController, animated: true)
             
             

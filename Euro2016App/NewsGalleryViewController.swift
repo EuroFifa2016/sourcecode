@@ -29,6 +29,7 @@ class NewsGalleryViewController: UIViewController  {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationItem.title = "GALLERY"
+
         // title = "GALLERY"
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -38,6 +39,12 @@ class NewsGalleryViewController: UIViewController  {
         
        
            }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        self.navigationItem.title = "GALLERY"
+
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
