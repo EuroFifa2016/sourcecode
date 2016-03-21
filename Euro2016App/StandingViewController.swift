@@ -54,11 +54,14 @@ class StandingViewController: ActivityIndicatorViewController,UITableViewDataSou
                     
                     let groupName = (index.objectForKey("group_name")) as! String
                     print(groupName)
-                    let dictArray = (index.objectForKey("team_info")) as! [[String:String]]
-                     print(dictArray)
-                    let standing = Standing(group: groupName, myNewDictArray: dictArray)
-                    self.standingArray += [standing]
-                 }
+                    if  let dictArray = (index.objectForKey("team_info")) as? [[String:String]]
+                    {
+                        print(dictArray)
+                        let standing = Standing(group: groupName, myNewDictArray: dictArray)
+                        self.standingArray += [standing]
+                    }
+                    
+                }
 
                 print(self.standingArray)
                

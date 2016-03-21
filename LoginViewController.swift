@@ -107,7 +107,8 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate,G
                         super.progressBarDisplayer( false, view: self.view)
                         if response.objectForKey("result") as? Bool == true
                         {
-                            
+                            let defaults = NSUserDefaults.standardUserDefaults()
+                            defaults.setObject(response["userInfo"]!["id"], forKey: "id")
                             self.loginPushViewController()
                             
 //                            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
@@ -225,6 +226,8 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate,G
                     if response.objectForKey("result") as? Bool == true
                     {
                         super.progressBarDisplayer( false, view: self.view)
+                        let defaults = NSUserDefaults.standardUserDefaults()
+                        defaults.setObject(response["userInfo"]!["id"], forKey: "id")
                         self.loginPushViewController()
 
                         //                        let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
@@ -326,6 +329,8 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate,G
                         if response.objectForKey("result") as? Bool == true
                         {
                             super.progressBarDisplayer( false, view: self.view)
+                            let defaults = NSUserDefaults.standardUserDefaults()
+                            defaults.setObject(response["userInfo"]!["id"], forKey: "id")
                             self.loginPushViewController()
 
                             //                            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
@@ -376,6 +381,8 @@ class LoginViewController: ActivityIndicatorViewController,SSASideMenuDelegate,G
                     super.progressBarDisplayer( false, view: self.view)
                     if response.objectForKey("result") as? Bool == true
                     {
+                        let defaults = NSUserDefaults.standardUserDefaults()
+                        defaults.setObject(response["userInfo"]!["id"], forKey: "id")
                         self.loginPushViewController()
 
                         

@@ -233,6 +233,8 @@ class NewsViewController: ActivityIndicatorViewController,UITableViewDataSource 
             super.progressBarDisplayer( false, view: self.view)
             if response.objectForKey("result") as? Bool == true {
                 
+                self.news.removeAll()
+                
                 print(response)
                 for index in response.objectForKey("newsInfo") as! NSArray
                 {

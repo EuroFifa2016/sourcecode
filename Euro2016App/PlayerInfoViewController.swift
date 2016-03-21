@@ -15,6 +15,8 @@ class PlayerInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.topItem?.title = ""
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "main_bg.png")!)
+
 
       self.navigationItem.title = "PLAYER 1"
         
