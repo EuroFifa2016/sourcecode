@@ -254,8 +254,7 @@ class NewsViewController: ActivityIndicatorViewController,UITableViewDataSource 
                     
                 }
                 
-                
-               // self.tableView .reloadData()
+                self.tableView .reloadData()
                 
             }
             
