@@ -125,6 +125,13 @@ class PlayersViewController: ActivityIndicatorViewController {
         let deviceToken:String =  (defaults .objectForKey("deviceToken") as? String)!
         let SaveTeamDict:[String:AnyObject] = ["device_token":deviceToken,"team_id":player.id]
         
+        //Have to change after webservice work
+        //userdetails.userPlayer = player.id
+        /// =================
+        
+        let playerDefaults = NSUserDefaults.standardUserDefaults()
+        playerDefaults.setObject(player.id, forKey: "playerId")
+        
         DataManager.API("saveYourTeam", jsonString: SaveTeamDict) { (response) -> Void in
             
             super.progressBarDisplayer(

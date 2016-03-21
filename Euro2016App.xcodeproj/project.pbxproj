@@ -43,7 +43,6 @@
 		02B8ADFD1C71E8B4003DB3C7 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8ADFC1C71E8B4003DB3C7 /* MatchTableViewCell.swift */; };
 		02B8AE011C71E9F8003DB3C7 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8AE001C71E9F8003DB3C7 /* Match.swift */; };
 		02B8AE031C71EAEF003DB3C7 /* MatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8AE021C71EAEF003DB3C7 /* MatchViewController.swift */; };
-		02B951161C60946D00BA1076 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B951151C60946D00BA1076 /* LeftMenuViewController.swift */; };
 		02B951181C6098C300BA1076 /* SSASideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B951171C6098C300BA1076 /* SSASideMenu.swift */; };
 		02C72B3B1C6B51D8005E3CEF /* NewsDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C72B3A1C6B51D8005E3CEF /* NewsDetailCell.swift */; };
 		02C72B3F1C6B5393005E3CEF /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C72B3E1C6B5393005E3CEF /* NewsDetailViewController.swift */; };
@@ -59,6 +58,7 @@
 		02FB24A71C6DA94F00B8673A /* PlayerInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB24A61C6DA94F00B8673A /* PlayerInfoViewController.swift */; };
 		02FB24AB1C6DFA8200B8673A /* Standing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB24AA1C6DFA8200B8673A /* Standing.swift */; };
 		02FB24AD1C6E0FDA00B8673A /* StandingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FB24AC1C6E0FDA00B8673A /* StandingCell.swift */; };
+		3203311A1C9FD6DE007E5E53 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320331191C9FD6DE007E5E53 /* LeftMenuViewController.swift */; };
 		320CCEA11C92B01B0073B634 /* SelectCountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320CCEA01C92B01B0073B634 /* SelectCountryViewController.swift */; };
 		321888161C96F095009534F2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 321888151C96F095009534F2 /* GoogleService-Info.plist */; };
 		324AF06D1C8EEB89004A035B /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324AF06C1C8EEB89004A035B /* PlayersViewController.swift */; };
@@ -131,7 +131,6 @@
 		02B8ADFC1C71E8B4003DB3C7 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
 		02B8AE001C71E9F8003DB3C7 /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		02B8AE021C71EAEF003DB3C7 /* MatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MatchViewController.swift; path = ../MatchViewController.swift; sourceTree = "<group>"; };
-		02B951151C60946D00BA1076 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		02B951171C6098C300BA1076 /* SSASideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSASideMenu.swift; sourceTree = "<group>"; };
 		02C72B3A1C6B51D8005E3CEF /* NewsDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsDetailCell.swift; sourceTree = "<group>"; };
 		02C72B3E1C6B5393005E3CEF /* NewsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewsDetailViewController.swift; path = ../NewsDetailViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +149,7 @@
 		02FB24A61C6DA94F00B8673A /* PlayerInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerInfoViewController.swift; sourceTree = "<group>"; };
 		02FB24AA1C6DFA8200B8673A /* Standing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Standing.swift; sourceTree = "<group>"; };
 		02FB24AC1C6E0FDA00B8673A /* StandingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandingCell.swift; sourceTree = "<group>"; };
+		320331191C9FD6DE007E5E53 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		320CCEA01C92B01B0073B634 /* SelectCountryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectCountryViewController.swift; path = ../SelectCountryViewController.swift; sourceTree = "<group>"; };
 		321888151C96F095009534F2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		324AF06C1C8EEB89004A035B /* PlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayersViewController.swift; path = ../PlayersViewController.swift; sourceTree = "<group>"; };
@@ -255,6 +255,7 @@
 		02316B341C55FA1200AE5BDD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				320331191C9FD6DE007E5E53 /* LeftMenuViewController.swift */,
 				320CCEA01C92B01B0073B634 /* SelectCountryViewController.swift */,
 				324AF06C1C8EEB89004A035B /* PlayersViewController.swift */,
 				324AF06E1C8EEBA2004A035B /* LoginViewController.swift */,
@@ -271,7 +272,6 @@
 				02FB24A61C6DA94F00B8673A /* PlayerInfoViewController.swift */,
 				02C72B3E1C6B5393005E3CEF /* NewsDetailViewController.swift */,
 				02CAD3351C63353800E91146 /* FirstViewController.swift */,
-				02B951151C60946D00BA1076 /* LeftMenuViewController.swift */,
 				55E185D51C7C770200C459D8 /* registerViewController.swift */,
 				55E185D71C7C7B9E00C459D8 /* RegisterTableViewCell.swift */,
 				559F602C1C7D984B002BFBD1 /* ForgotPasswordViewController.swift */,
@@ -578,6 +578,7 @@
 				02FB24AD1C6E0FDA00B8673A /* StandingCell.swift in Sources */,
 				559F602F1C7DD898002BFBD1 /* SettingVC.swift in Sources */,
 				02B0780B1C68A420005B3CE1 /* IQKeyboardManagerConstants.swift in Sources */,
+				3203311A1C9FD6DE007E5E53 /* LeftMenuViewController.swift in Sources */,
 				02CAD3331C6333DF00E91146 /* RGPageViewController.swift in Sources */,
 				02CAD3731C63752F00E91146 /* NewsTableViewCell.swift in Sources */,
 				02316B3D1C56024100AE5BDD /* CountryCell.swift in Sources */,
@@ -625,7 +626,6 @@
 				326578681C94246A0071EDFE /* CustomButton.swift in Sources */,
 				02B8AE011C71E9F8003DB3C7 /* Match.swift in Sources */,
 				02C90A2E1C645FF500F104F1 /* NewsCell.swift in Sources */,
-				02B951161C60946D00BA1076 /* LeftMenuViewController.swift in Sources */,
 				326FAEEC1C97DBBA00E4AF3B /* GalleryViewController.swift in Sources */,
 				02B078131C68A420005B3CE1 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				02B951181C6098C300BA1076 /* SSASideMenu.swift in Sources */,

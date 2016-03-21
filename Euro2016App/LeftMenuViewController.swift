@@ -14,7 +14,8 @@ class LeftMenuViewController: UIViewController {
   //MARK: Properties
     
     var selectedIndex:Int = 0
-    
+    var titles:[String] = []
+    var images: [String] = []
   //MARK: View Life Cycle
 
     override func viewDidAppear(animated: Bool) {
@@ -26,7 +27,30 @@ class LeftMenuViewController: UIViewController {
         super.viewDidLoad()
 
        
-      
+        
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let userId = userDefaults .valueForKey("id") as? String ?? ""
+        
+        /// =================
+        
+        
+        
+        if (userId == "" )
+        {
+            titles = ["Home", "Predictions", "Statistics", "My Team", "Settings"]
+            
+            images = ["Image1", "Image3", "Image6", "Image2", "Image5"]
+            
+        }
+        else
+        {
+            titles = ["Home", "Predictions", "Statistics", "My Team", "Settings", "Logout"]
+            
+            images = ["Image1", "Image3", "Image6", "Image2", "Image5",""]
+            
+        }
+
         
     }
     
@@ -45,7 +69,7 @@ class LeftMenuViewController: UIViewController {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 6
+        return titles.count
     }
     
     
@@ -55,10 +79,6 @@ class LeftMenuViewController: UIViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! SideBarTableViewCell
         cell.backgroundColor = UIColor.clearColor()
         
-        // Fetches the appropriate player for the data source layout.
-        let titles: [String] = ["Home", "Predictions", "Statistics", "My Team", "Settings", "Logout"]
-        
-        let images: [String] = ["Image1", "Image3", "Image6", "Image2", "Image5",""]
         
         cell.sidebarLabel.text = titles[indexPath.row]
         cell.sidebarImageView.image = UIImage(named: images[indexPath.row])
@@ -111,8 +131,22 @@ class LeftMenuViewController: UIViewController {
             sideMenuViewController?.hideMenuViewController()
 
          case 5:
-            [self.navigationController?.popViewControllerAnimated(true)]
-            print("LogOut")
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            let userId = userDefaults .valueForKey("id") as? String ?? ""
+           
+            if (userId == "" )
+             {
+                
+                for key in Array(NSUserDefaults.standardUserDefaults().dictionaryRepresentation().keys) {
+                    NSUserDefaults.standardUserDefaults().removeObjectForKey(key)
+                }
+                 let viewController = storyboard!.instantiateViewControllerWithIdentifier("CountriesViewController") as! CountriesViewController
+                self.navigationController? .setViewControllers([viewController], animated: false)
+                //[navigationController setViewControllers: animated:NO];
+                [self.navigationController?.pushViewController(viewController, animated: false)]
+                print("LogOut")
+             }
+           
           default:
               break
           }

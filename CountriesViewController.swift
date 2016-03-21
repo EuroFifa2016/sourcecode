@@ -124,6 +124,12 @@ class CountriesViewController: ActivityIndicatorViewController,UICollectionViewD
         let deviceToken:String =  (defaults .objectForKey("deviceToken") as? String)!
         let SaveTeamDict:[String:AnyObject] = ["device_token":deviceToken,"team_id":country.id]
         
+        //Have to change after webservice work
+        //        userdetails.userCountry = country.id
+        //        print( userdetails.userCountry)
+        
+        let countryDefaults = NSUserDefaults.standardUserDefaults()
+        countryDefaults.setObject(country.id, forKey: "countryId")
         DataManager.API("saveYourTeam", jsonString: SaveTeamDict) { (response) -> Void in
             
             super.progressBarDisplayer(
@@ -132,9 +138,24 @@ class CountriesViewController: ActivityIndicatorViewController,UICollectionViewD
             
             if response.objectForKey("result") as? Bool == true
             {
-                let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("PlayersViewController") as! PlayersViewController
+                let userDefaults = NSUserDefaults.standardUserDefaults()
                 
-                self.navigationController?.pushViewController(viewController, animated: true)
+                if let playerId = userDefaults .valueForKey("playerId") as? String
+                {
+                    print(playerId)
+                    let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+                    
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }
+                else
+                {
+                    let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("PlayersViewController") as! PlayersViewController
+                    
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                }
+                
+                print(response)
+                
 
             }
             else

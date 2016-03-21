@@ -40,20 +40,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar .appearance().titleTextAttributes = attributes
                  IQKeyboardManager.sharedManager().enable = true
         
-        let SaveDeviceParamDict:[String:AnyObject] = ["device_token":"8734ec79aaf8112757c1e59b8c66c31989b48f6c74336ae89cd179e063ab9749","device_type":"IOS"]
+              /// =================
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let userId = userDefaults .valueForKey("id") as? String ?? ""
+        let playerId = userDefaults .valueForKey("playerId") as? String ?? ""
+        let countryId = userDefaults .valueForKey("countryId") as? String ?? ""
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject("8734ec79aaf8112757c1e59b8c66c31989b48f6c74336ae89cd179e063ab9749", forKey: "deviceToken")
-
+        /// =================
         
-        DataManager.API("saveDevice", jsonString: SaveDeviceParamDict, success: { (response) -> Void in
-           
-            if response.objectForKey("result") as? Bool == true {
-                print(response.objectForKey("message"))
-            }
+        let nav1 = UINavigationController()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if  (userId == "" && playerId == "" && countryId == "")
+        {
             
-         
-        })
+            let viewController = storyboard.instantiateViewControllerWithIdentifier("CountriesViewController") as! CountriesViewController
+            nav1.viewControllers = [viewController]
+            self.window!.rootViewController = nav1
+            
+            
+        }
+        else if (playerId == "" && userId == "")
+        {
+            let viewController = storyboard.instantiateViewControllerWithIdentifier("PlayersViewController") as! PlayersViewController
+            nav1.viewControllers = [viewController]
+            self.window!.rootViewController = nav1
+            
+        }
+        else if (countryId == "" && userId == "")
+        {
+            let viewController = storyboard.instantiateViewControllerWithIdentifier("CountriesViewController") as! CountriesViewController
+            nav1.viewControllers = [viewController]
+            self.window!.rootViewController = nav1
+            
+        }
+            
+        else if (userId == "")
+        {
+            let viewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+            nav1.viewControllers = [viewController]
+            self.window!.rootViewController = nav1
+        }
+        else
+        {
+            let viewController = storyboard.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
+            nav1.viewControllers = [viewController]
+            self.window!.rootViewController = nav1
+        }
+        
 
         // Override point for customization after application launch.
         return true
@@ -96,10 +129,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         
-       // let deviceTokenStr = convertDeviceTokenToString(deviceToken) ?? "8734ec79aaf8112757c1e59b8c66c31989b48f6c74336ae89cd179e063ab9749"
+        let deviceTokenStr = convertDeviceTokenToString(deviceToken) ?? "8734ec79aaf8112757c1e59b8c66c31989b48f6c74336ae89cd179e063ab9749"
+        let SaveDeviceParamDict:[String:AnyObject] = ["device_token":deviceTokenStr,"device_type":"IOS"]
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject("8734ec79aaf8112757c1e59b8c66c31989b48f6c74336ae89cd179e063ab9749", forKey: "deviceToken")
         
         
-        // ...register device token with our Time Entry API server via REST
+        DataManager.API("saveDevice", jsonString: SaveDeviceParamDict, success: { (response) -> Void in
+            
+            if response.objectForKey("result") as? Bool == true {
+                print(response.objectForKey("message"))
+            }
+            
+            
+        })
+        
+        
     }
     
      func convertDeviceTokenToString(deviceToken:NSData) -> String {
