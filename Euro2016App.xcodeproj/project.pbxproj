@@ -83,6 +83,9 @@
 		55E185D61C7C770200C459D8 /* registerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E185D51C7C770200C459D8 /* registerViewController.swift */; };
 		55E185D81C7C7B9E00C459D8 /* RegisterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E185D71C7C7B9E00C459D8 /* RegisterTableViewCell.swift */; };
 		55F18E461C770624000C6F77 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55F18E451C770624000C6F77 /* Alamofire.framework */; };
+		6177BDAF1CA01BBA00FAD5A6 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6177BDAE1CA01BBA00FAD5A6 /* AboutViewController.swift */; };
+		6177BDB11CA020E600FAD5A6 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6177BDB01CA020E600FAD5A6 /* TermsViewController.swift */; };
+		6177BDB31CA022C700FAD5A6 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6177BDB21CA022C700FAD5A6 /* MyAccountViewController.swift */; };
 		61E460F11C98144A0076ECFD /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E460F01C9814490076ECFD /* PlayerDetail.swift */; };
 		61EE03221C9AC9EE00E94933 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61EE03211C9AC9EE00E94933 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -173,6 +176,9 @@
 		55E185D51C7C770200C459D8 /* registerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = registerViewController.swift; sourceTree = "<group>"; };
 		55E185D71C7C7B9E00C459D8 /* RegisterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterTableViewCell.swift; sourceTree = "<group>"; };
 		55F18E451C770624000C6F77 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		6177BDAE1CA01BBA00FAD5A6 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		6177BDB01CA020E600FAD5A6 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		6177BDB21CA022C700FAD5A6 /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
 		61E460F01C9814490076ECFD /* PlayerDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetail.swift; sourceTree = "<group>"; };
 		61EE03211C9AC9EE00E94933 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B78DCDC942EC42B22951A2CC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -276,6 +282,9 @@
 				55E185D71C7C7B9E00C459D8 /* RegisterTableViewCell.swift */,
 				559F602C1C7D984B002BFBD1 /* ForgotPasswordViewController.swift */,
 				559F602E1C7DD898002BFBD1 /* SettingVC.swift */,
+				6177BDB21CA022C700FAD5A6 /* MyAccountViewController.swift */,
+				6177BDAE1CA01BBA00FAD5A6 /* AboutViewController.swift */,
+				6177BDB01CA020E600FAD5A6 /* TermsViewController.swift */,
 				02316B141C55E58900AE5BDD /* ViewController.swift */,
 			);
 			name = ViewControllers;
@@ -576,10 +585,13 @@
 				02B0780E1C68A420005B3CE1 /* IQKeyboardReturnKeyHandler.swift in Sources */,
 				324AF0731C8EEF55004A035B /* CountriesViewController.swift in Sources */,
 				02FB24AD1C6E0FDA00B8673A /* StandingCell.swift in Sources */,
+				6177BDAF1CA01BBA00FAD5A6 /* AboutViewController.swift in Sources */,
 				559F602F1C7DD898002BFBD1 /* SettingVC.swift in Sources */,
+				6177BDB31CA022C700FAD5A6 /* MyAccountViewController.swift in Sources */,
 				02B0780B1C68A420005B3CE1 /* IQKeyboardManagerConstants.swift in Sources */,
 				3203311A1C9FD6DE007E5E53 /* LeftMenuViewController.swift in Sources */,
 				02CAD3331C6333DF00E91146 /* RGPageViewController.swift in Sources */,
+				6177BDB11CA020E600FAD5A6 /* TermsViewController.swift in Sources */,
 				02CAD3731C63752F00E91146 /* NewsTableViewCell.swift in Sources */,
 				02316B3D1C56024100AE5BDD /* CountryCell.swift in Sources */,
 				02B078071C68A420005B3CE1 /* IQUITextFieldView+Additions.swift in Sources */,

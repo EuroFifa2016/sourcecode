@@ -20,6 +20,8 @@ class ScorerViewController: ActivityIndicatorViewController,UITableViewDataSourc
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.topItem?.title = "SCORER"
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "main_bg.png")!)
+ 
 
         // Do any additional setup after loading the view.
     }
