@@ -28,7 +28,7 @@ class CustomButton: UIButton {
    
   class  func setBackBarButtonItem(viewCon: UIViewController) {
         viewCon.navigationItem.hidesBackButton = true
-        let btn: CustomButton = CustomButton(frame: CGRectMake(0.0, 0.0, 20.0, 20.0))
+        let btn: CustomButton = CustomButton(frame: CGRectMake(0.0, 0.0, 25.0, 25.0))
         btn.parent = viewCon
         let eng_btn: UIBarButtonItem = UIBarButtonItem(customView: btn)
         viewCon.navigationItem.leftBarButtonItem = eng_btn

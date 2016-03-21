@@ -27,14 +27,12 @@ class NewsGalleryViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.topItem?.title = ""
+        
         self.navigationItem.title = "GALLERY"
 
         // title = "GALLERY"
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        
+       CustomButton.setBackBarButtonItem(self)
         print(arr_galary.count)
         
        

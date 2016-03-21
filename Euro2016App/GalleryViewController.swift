@@ -26,10 +26,13 @@ class GalleryViewController: UIViewController,UIScrollViewDelegate,UIGestureReco
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.topItem?.title = ""
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        CustomButton.setBackBarButtonItem(self)
+//        self.navigationController?.navigationBar.topItem?.title = ""
+//        
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+//        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
         
         print(arrayOfImages)
         print(self.view.frame.size.width)

@@ -115,7 +115,7 @@ class FirstViewController: RGPageViewController, RGPageViewControllerDataSource,
     {
         var tabView: UIView!
         tabView = UILabel()
-        (tabView as! UILabel).font = UIFont(name: "Quicksand-Regular", size: 13)!
+        (tabView as! UILabel).font = UIFont(name: "Quicksand-Regular", size: 16)!
         (tabView as! UILabel).text = topbarArray[index] as? String
         (tabView as! UILabel).textColor = UIColor .whiteColor()
         (tabView as! UILabel).sizeToFit()
@@ -163,7 +163,24 @@ class FirstViewController: RGPageViewController, RGPageViewControllerDataSource,
     func widthForTabAtIndex(index: Int) -> CGFloat
     {
        
-            var tabSize = (topbarArray[index] as! String).sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(17)])
+       
+        var tabSize:CGSize
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        let screenWidth = screenSize.width
+        print(screenWidth)
+       if  screenWidth == 414
+       {
+           tabSize = (topbarArray[index] as! String).sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(25)])
+       }
+        else if  screenWidth == 375
+       {
+           tabSize = (topbarArray[index] as! String).sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(20)])
+        }
+        else
+       {
+           tabSize = (topbarArray[index] as! String).sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(17)])
+        }
+        
             
             tabSize.width += 8
             

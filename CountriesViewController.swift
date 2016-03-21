@@ -19,6 +19,25 @@ class CountriesViewController: ActivityIndicatorViewController,UICollectionViewD
     var height = UIScreen.mainScreen().bounds.size.height
     
     // MARK: Actions
+    @IBAction func skipButtonAction(sender: AnyObject) {
+        
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        
+        if let playerId = userDefaults .valueForKey("playerId") as? String
+        {
+            print(playerId)
+            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+            
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+        else
+        {
+            let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("PlayersViewController") as! PlayersViewController
+            
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+
+    }
     
     // MARK: View Life Cycle
     
@@ -128,8 +147,7 @@ class CountriesViewController: ActivityIndicatorViewController,UICollectionViewD
         //        userdetails.userCountry = country.id
         //        print( userdetails.userCountry)
         
-        let countryDefaults = NSUserDefaults.standardUserDefaults()
-        countryDefaults.setObject(country.id, forKey: "countryId")
+      
         DataManager.API("saveYourTeam", jsonString: SaveTeamDict) { (response) -> Void in
             
             super.progressBarDisplayer(
@@ -139,6 +157,7 @@ class CountriesViewController: ActivityIndicatorViewController,UICollectionViewD
             if response.objectForKey("result") as? Bool == true
             {
                 let userDefaults = NSUserDefaults.standardUserDefaults()
+                userDefaults.setObject(country.id, forKey: "countryId")
                 
                 if let playerId = userDefaults .valueForKey("playerId") as? String
                 {

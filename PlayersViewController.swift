@@ -129,15 +129,15 @@ class PlayersViewController: ActivityIndicatorViewController {
         //userdetails.userPlayer = player.id
         /// =================
         
-        let playerDefaults = NSUserDefaults.standardUserDefaults()
-        playerDefaults.setObject(player.id, forKey: "playerId")
+       
         
         DataManager.API("saveYourTeam", jsonString: SaveTeamDict) { (response) -> Void in
             
             super.progressBarDisplayer(
                 false, view: self.view)
             
-            
+            let playerDefaults = NSUserDefaults.standardUserDefaults()
+            playerDefaults.setObject(player.id, forKey: "playerId")
             if response.objectForKey("result") as? Bool == true
             {
                 let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController

@@ -12,7 +12,7 @@ import TwitterKit
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,SSASideMenuDelegate {
 
     var window: UIWindow?
 
@@ -39,6 +39,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ]
         UINavigationBar .appearance().titleTextAttributes = attributes
                  IQKeyboardManager.sharedManager().enable = true
+        
+        
+        
+        let deviceTokenStr =  "8734ec79aaf8112757c1e59b8c66c31989b48f6c74336ae89cd179e063ab9749"
+        let SaveDeviceParamDict:[String:AnyObject] = ["device_token":deviceTokenStr,"device_type":"IOS"]
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject("8734ec79aaf8112757c1e59b8c66c31989b48f6c74336ae89cd179e063ab9749", forKey: "deviceToken")
+        
+        
+        DataManager.API("saveDevice", jsonString: SaveDeviceParamDict, success: { (response) -> Void in
+            
+            if response.objectForKey("result") as? Bool == true {
+                print(response.objectForKey("message"))
+            }
+            
+            
+        })
+
         
               /// =================
         let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -79,12 +98,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let viewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
             nav1.viewControllers = [viewController]
             self.window!.rootViewController = nav1
+            
         }
         else
         {
-            let viewController = storyboard.instantiateViewControllerWithIdentifier("SSASideMenu") as! SSASideMenu
-            nav1.viewControllers = [viewController]
-            self.window!.rootViewController = nav1
+            
+           let controller: UINavigationController = (storyboard.instantiateViewControllerWithIdentifier("FirstViewController") as! UINavigationController)
+            
+            let viewController = storyboard.instantiateViewControllerWithIdentifier("LeftMenuViewController") as! LeftMenuViewController
+            
+            let sideMenu = SSASideMenu(contentViewController:controller, leftMenuViewController: viewController)
+            
+            sideMenu.backgroundImage = UIImage(named: "Background")
+            sideMenu.configure(SSASideMenu.MenuViewEffect(fade: true, scale: true, scaleBackground: false))
+            sideMenu.configure(SSASideMenu.ContentViewEffect(alpha: 1.0, scale: 0.7))
+            sideMenu.configure(SSASideMenu.ContentViewShadow(enabled: true, color: UIColor.blackColor(), opacity: 0.6, radius: 6.0))
+            
+            window?.rootViewController = sideMenu
+            
         }
         
 

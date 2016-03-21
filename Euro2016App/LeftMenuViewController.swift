@@ -92,9 +92,7 @@ class LeftMenuViewController: UIViewController {
            cell.selectionImageView.image = nil
         }
 
-       
-        
-        
+          
         return cell
     }
     
@@ -131,21 +129,26 @@ class LeftMenuViewController: UIViewController {
             sideMenuViewController?.hideMenuViewController()
 
          case 5:
+            
             let userDefaults = NSUserDefaults.standardUserDefaults()
-            let userId = userDefaults .valueForKey("id") as? String ?? ""
-           
-            if (userId == "" )
-             {
-                
-                for key in Array(NSUserDefaults.standardUserDefaults().dictionaryRepresentation().keys) {
-                    NSUserDefaults.standardUserDefaults().removeObjectForKey(key)
-                }
-                 let viewController = storyboard!.instantiateViewControllerWithIdentifier("CountriesViewController") as! CountriesViewController
-                self.navigationController? .setViewControllers([viewController], animated: false)
-                //[navigationController setViewControllers: animated:NO];
-                [self.navigationController?.pushViewController(viewController, animated: false)]
+            userDefaults .removeObjectForKey("id")
+             userDefaults .removeObjectForKey("playerId")
+            userDefaults .removeObjectForKey("countryId")
+            
+            
+            // let loginViewController = storyboard!.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+         
+            
+                self.navigationController?.popViewControllerAnimated(true)
+                    let loginManager = FBSDKLoginManager()
+                loginManager.logOut() // this is an instance function
+            
+             GIDSignIn.sharedInstance().signOut()
+            
+            
+            
                 print("LogOut")
-             }
+             //}
            
           default:
               break
