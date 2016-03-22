@@ -23,19 +23,15 @@ class LeftMenuViewController: UIViewController {
         
         
     }
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
-       
-        
         
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let userId = userDefaults .valueForKey("id") as? String ?? ""
         
         /// =================
-        
-        
-        
         if (userId == "" )
         {
             titles = ["Home", "Predictions", "Statistics", "My Team", "Settings"]
@@ -102,7 +98,8 @@ class LeftMenuViewController: UIViewController {
     }
     
      // MARK: - Table view Delegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         selectedIndex = indexPath.row
@@ -122,12 +119,13 @@ class LeftMenuViewController: UIViewController {
 //            sideMenuViewController?.hideMenuViewController()
 //            break
 
-         case 4:
-//            
+         case 4: break
+//          
+/*
            let viewController = storyboard!.instantiateViewControllerWithIdentifier("SettingVC") as! SettingVC
             sideMenuViewController?.contentViewController = UINavigationController(rootViewController: viewController)
             sideMenuViewController?.hideMenuViewController()
-
+*/
          case 5:
             
             let userDefaults = NSUserDefaults.standardUserDefaults()
